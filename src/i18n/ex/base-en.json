@@ -63,6 +63,10 @@
     "defaultMessage": "Add members",
     "description": "Flat button [Add members] (to topic)"
   },
+  "button_admin_in": {
+    "defaultMessage": "Admin Sign in",
+    "description": "Button [Admin Sign In]"
+  },
   "button_cancel": {
     "defaultMessage": "Cancel",
     "description": "Button [Cancel]"
@@ -83,6 +87,10 @@
     "defaultMessage": "Edit",
     "description": "Call to action [Edit]"
   },
+  "button_group_in": {
+    "defaultMessage": "Get Group info",
+    "description": "Button [Get Group]"
+  },
   "button_logout": {
     "defaultMessage": "Logout",
     "description": "Button [Logout]"
@@ -102,10 +110,6 @@
   "button_send_request": {
     "defaultMessage": "Send request",
     "description": "Button [Send request]"
-  },
-  "button_sign_in": {
-    "defaultMessage": "Sign in",
-    "description": "Button [Sign In]"
   },
   "button_sign_up": {
     "defaultMessage": "Sign up",
@@ -322,6 +326,10 @@
     "defaultMessage": "No members",
     "description": "Shown in place of group members"
   },
+  "group_prompt": {
+    "defaultMessage": "Group",
+    "description": "Placeholer for group"
+  },
   "group_user_id_prompt": {
     "defaultMessage": "Group or User ID",
     "description": "Prompt for entering user or group ID"
@@ -459,6 +467,10 @@
   "label_size": {
     "defaultMessage": "Size:",
     "description": "Label for file size"
+  },
+  "label_test_in": {
+    "defaultMessage": "Get test info",
+    "description": "label [Get test info]"
   },
   "label_topic_name": {
     "defaultMessage": "Name",

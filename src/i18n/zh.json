@@ -168,11 +168,11 @@
     "obsolete": false
   },
   "button_sign_in": {
-    "translation": "登录",
+    "translation": "管理员登录",
     "defaultMessage": "Sign in",
     "description": "Button [Sign In]",
     "missing": false,
-    "obsolete": false
+    "obsolete": true
   },
   "button_sign_up": {
     "translation": "注册",
@@ -1645,6 +1645,41 @@
     "translation": "扫描二维码",
     "defaultMessage": "Scan QR Code",
     "description": "Title for scanning QR code",
+    "missing": false,
+    "obsolete": false
+  },
+  "button_admin_in": {
+    "translation": "开始测评",
+    "defaultMessage": "Admin Sign in",
+    "description": "Button [Admin Sign In]",
+    "missing": false,
+    "obsolete": false
+  },
+  "test_prompt": {
+    "translation": "",
+    "defaultMessage": "Test",
+    "description": "select test value",
+    "missing": true,
+    "obsolete": true
+  },
+  "button_group_in": {
+    "translation": "获取分组",
+    "defaultMessage": "Get Group info",
+    "description": "Button [Get Group]",
+    "missing": false,
+    "obsolete": false
+  },
+  "label_test_in": {
+    "translation": "选择场次: ",
+    "defaultMessage": "Get test info",
+    "description": "label [Get test info]",
+    "missing": false,
+    "obsolete": false
+  },
+  "group_prompt": {
+    "translation": "组号",
+    "defaultMessage": "Group",
+    "description": "Placeholer for group",
     "missing": false,
     "obsolete": false
   }

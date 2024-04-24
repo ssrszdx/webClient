@@ -5,6 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import CheckBox from '../widgets/checkbox.jsx';
 
 import HostSelector from '../widgets/host-selector.jsx';
+import AdminSettingsView from './admin-view.jsx';
 
 export default class SettingsView extends React.PureComponent {
   constructor(props) {
@@ -29,6 +30,8 @@ export default class SettingsView extends React.PureComponent {
       serverAddress: this.state.serverAddress,
       secureConnection: this.state.secureConnection,
     });
+
+
   }
 
   handleTransportSelected(e) {
@@ -61,6 +64,7 @@ export default class SettingsView extends React.PureComponent {
 
     return (
       <form id="settings-form" className="panel-form" onSubmit={this.handleSubmit}>
+        <AdminSettingsView></AdminSettingsView>
         <div className="panel-form-row">
           <label className="small">
             <FormattedMessage id="label_server_to_use" defaultMessage="Server to use:"

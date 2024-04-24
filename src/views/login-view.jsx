@@ -4,6 +4,7 @@ import { FormattedMessage } from 'react-intl';
 
 import CheckBox from '../widgets/checkbox.jsx';
 import VisiblePassword from '../widgets/visible-password.jsx';
+import TestDropdownList from '../widgets/test-dplist.jsx';
 
 export default class LoginView extends React.Component {
   constructor(props) {
@@ -13,12 +14,15 @@ export default class LoginView extends React.Component {
       login: props.login,
       password: '',
       hostName: props.serverAddress,
-      saveToken: props.persist
+      saveToken: props.persist,
+      groupOption: ''
     };
     this.handleLoginChange = this.handleLoginChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleToggleSaveToken = this.handleToggleSaveToken.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleAdminSetting = this.handleAdminSetting.bind(this);
+    this.handleClick=this.handleClick.bind(this);
   }
 
   handleLoginChange(e) {
@@ -38,6 +42,39 @@ export default class LoginView extends React.Component {
     e.preventDefault();
     this.props.onLogin(this.state.login.trim(), this.state.password.trim());
   }
+  handleAdminSetting(e){
+    e.preventDefault();
+    //this.props.handleShowInfoView();
+  }
+
+
+  handleClick = async (e) => {
+    try {
+        e.preventDefault();
+        const params = new URLSearchParams({
+            clientid: '1',
+            testid: '2'
+        });
+        const url = `http://localhost:6060/api/getgroupinfo?${params}`;
+        const response = await fetch(url);
+        const data = await response.json();
+
+        const processdata = data.data.map((item) => ({
+            groupid: item.Groupid,
+            userid:item.Userid,
+            username: item.Username
+        }))
+        this.setState({
+          groupOption:processdata[0].groupid,
+          login:'alice',
+          password:'alice123'
+        });
+        // 处理响应数据
+    } catch (error) {
+        console.error('Error fetching options:', error);
+    }
+};
+
 
   render() {
     let submitClasses = 'primary';
@@ -47,10 +84,29 @@ export default class LoginView extends React.Component {
 
     return (
       <form id="login-form" onSubmit={this.handleSubmit}>
+
+        <div  className="panel-form-row">
+          <TestDropdownList id="test-dplist" />       
+        </div>
+
+        <FormattedMessage id="group_prompt" defaultMessage="Group"
+          description="Placeholer for group">
+        {
+          (group_prompt) => <input type="text" id="groupLogin" readOnly 
+            placeholder={group_prompt}
+            autoComplete="username"
+            autoCorrect="off"
+            autoCapitalize="none"
+            value={this.state.groupOption}
+            onChange={this.handleLoginChange}
+            required autoFocus />
+        }
+        </FormattedMessage>
+
         <FormattedMessage id="login_prompt" defaultMessage="Login"
           description="Placeholer for username/login">
         {
-          (login_prompt) => <input type="text" id="inputLogin"
+          (login_prompt) => <input type="text" id="inputLogin" readOnly 
             placeholder={login_prompt}
             autoComplete="username"
             autoCorrect="off"
@@ -63,7 +119,7 @@ export default class LoginView extends React.Component {
         <FormattedMessage id="password_prompt" defaultMessage="Password"
           description="Placeholder/prompt for entering password">
         {
-          (password_prompt) => <VisiblePassword type="password" id="inputPassword"
+          (password_prompt) => <input type="password" id="inputPassword"  readOnly 
             placeholder={password_prompt}
             autoComplete="current-password"
             value={this.state.password}
@@ -84,9 +140,13 @@ export default class LoginView extends React.Component {
           </a>
         </div>
         <div className="dialog-buttons">
+          <button className={submitClasses} type="submit" onClick={this.handleClick} >
+            <FormattedMessage id="button_group_in" defaultMessage="Get Group info"
+              description="Button [Get Group]" />
+          </button>
           <button className={submitClasses} type="submit">
-            <FormattedMessage id="button_sign_in" defaultMessage="Sign in"
-              description="Button [Sign In]" />
+            <FormattedMessage id="button_admin_in" defaultMessage="Admin Sign in"
+              description="Button [Admin Sign In]" />
           </button>
         </div>
       </form>

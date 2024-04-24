@@ -172,7 +172,7 @@
     "defaultMessage": "Sign in",
     "description": "Button [Sign In]",
     "missing": false,
-    "obsolete": false
+    "obsolete": true
   },
   "button_sign_up": {
     "translation": "สร้างบัญชี",
@@ -1646,6 +1646,41 @@
     "defaultMessage": "Scan QR Code",
     "description": "Title for scanning QR code",
     "missing": false,
+    "obsolete": false
+  },
+  "button_admin_in": {
+    "translation": "",
+    "defaultMessage": "Admin Sign in",
+    "description": "Button [Admin Sign In]",
+    "missing": true,
+    "obsolete": false
+  },
+  "test_prompt": {
+    "translation": "",
+    "defaultMessage": "Test",
+    "description": "select test value",
+    "missing": true,
+    "obsolete": true
+  },
+  "button_group_in": {
+    "translation": "",
+    "defaultMessage": "Get Group info",
+    "description": "Button [Get Group]",
+    "missing": true,
+    "obsolete": false
+  },
+  "label_test_in": {
+    "translation": "",
+    "defaultMessage": "Get test info",
+    "description": "label [Get test info]",
+    "missing": true,
+    "obsolete": false
+  },
+  "group_prompt": {
+    "translation": "",
+    "defaultMessage": "Group",
+    "description": "Placeholer for group",
+    "missing": true,
     "obsolete": false
   }
 }

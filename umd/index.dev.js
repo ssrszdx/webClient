@@ -4043,6 +4043,158 @@ class AccSupportView extends (react__WEBPACK_IMPORTED_MODULE_0___default().PureC
 
 /***/ }),
 
+/***/ "./src/views/admin-view.jsx":
+/*!**********************************!*\
+  !*** ./src/views/admin-view.jsx ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ AdminSettingsView)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-intl */ "react-intl");
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _widgets_checkbox_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../widgets/checkbox.jsx */ "./src/widgets/checkbox.jsx");
+/* harmony import */ var _widgets_host_selector_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../widgets/host-selector.jsx */ "./src/widgets/host-selector.jsx");
+
+
+
+
+class AdminSettingsView extends (react__WEBPACK_IMPORTED_MODULE_0___default().PureComponent) {
+  constructor(props) {
+    super(props);
+    this.state = {
+      transport: props.transport || 'def',
+      serverAddress: props.serverAddress,
+      secureConnection: props.secureConnection
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleTransportSelected = this.handleTransportSelected.bind(this);
+    this.handleServerAddressChange = this.handleServerAddressChange.bind(this);
+    this.handleToggleSecure = this.handleToggleSecure.bind(this);
+  }
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.onUpdate({
+      transport: this.state.transport,
+      serverAddress: this.state.serverAddress,
+      secureConnection: this.state.secureConnection
+    });
+  }
+  handleTransportSelected(e) {
+    this.setState({
+      transport: e.currentTarget.value
+    });
+  }
+  handleServerAddressChange(name) {
+    this.setState({
+      serverAddress: name
+    });
+  }
+  handleToggleSecure(e) {
+    this.setState({
+      secureConnection: !this.state.secureConnection
+    });
+  }
+  render() {
+    const names = {
+      def: "default",
+      ws: "websocket",
+      lp: "long polling"
+    };
+    const transportOptions = [];
+    ['def', 'ws', 'lp'].map(item => {
+      const id = 'transport-' + item;
+      const name = names[item];
+      transportOptions.push(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+        key: item
+      }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "radio",
+        id: id,
+        name: "transport-select",
+        value: item,
+        checked: this.state.transport === item,
+        onChange: this.handleTransportSelected
+      }), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+        htmlFor: id
+      }, name)));
+    });
+    return react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+      id: "settings-form",
+      className: "panel-form",
+      onSubmit: this.handleSubmit
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+      className: "small"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
+      id: "label_server_to_use",
+      defaultMessage: [{
+        "type": 0,
+        "value": "Server to use:"
+      }]
+    }))), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "panel-form-row"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+      className: "small"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
+      id: "label_server_to_use",
+      defaultMessage: [{
+        "type": 0,
+        "value": "Server to use:"
+      }]
+    }))), react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_widgets_host_selector_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      serverAddress: this.state.serverAddress,
+      onServerAddressChange: this.handleServerAddressChange
+    }), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "panel-form-row"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_widgets_checkbox_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      id: "secure-connection",
+      name: "secure-connection",
+      checked: this.state.secureConnection,
+      className: "quoted",
+      onChange: this.handleToggleSecure
+    }), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+      htmlFor: "secure-connection"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
+      id: "label_use_secure_connection",
+      defaultMessage: [{
+        "type": 0,
+        "value": "Use secure connection"
+      }]
+    }))), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "panel-form-row"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+      className: "small"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
+      id: "label_wire_transport",
+      defaultMessage: [{
+        "type": 0,
+        "value": "Wire transport:"
+      }]
+    }))), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "panel-form-row"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", {
+      className: "quoted"
+    }, transportOptions)), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "dialog-buttons"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      type: "submit",
+      className: "primary"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
+      id: "button_update",
+      defaultMessage: [{
+        "type": 0,
+        "value": "Update"
+      }]
+    }))));
+  }
+}
+;
+
+/***/ }),
+
 /***/ "./src/views/contacts-view.jsx":
 /*!*************************************!*\
   !*** ./src/views/contacts-view.jsx ***!
@@ -4928,6 +5080,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _widgets_checkbox_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../widgets/checkbox.jsx */ "./src/widgets/checkbox.jsx");
 /* harmony import */ var _widgets_visible_password_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../widgets/visible-password.jsx */ "./src/widgets/visible-password.jsx");
+/* harmony import */ var _widgets_test_dplist_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../widgets/test-dplist.jsx */ "./src/widgets/test-dplist.jsx");
+
 
 
 
@@ -4939,12 +5093,15 @@ class LoginView extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
       login: props.login,
       password: '',
       hostName: props.serverAddress,
-      saveToken: props.persist
+      saveToken: props.persist,
+      groupOption: ''
     };
     this.handleLoginChange = this.handleLoginChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleToggleSaveToken = this.handleToggleSaveToken.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleAdminSetting = this.handleAdminSetting.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
   handleLoginChange(e) {
     this.setState({
@@ -4966,6 +5123,33 @@ class LoginView extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
     e.preventDefault();
     this.props.onLogin(this.state.login.trim(), this.state.password.trim());
   }
+  handleAdminSetting(e) {
+    e.preventDefault();
+  }
+  handleClick = async e => {
+    try {
+      e.preventDefault();
+      const params = new URLSearchParams({
+        clientid: '1',
+        testid: '2'
+      });
+      const url = `http://localhost:6060/api/getgroupinfo?${params}`;
+      const response = await fetch(url);
+      const data = await response.json();
+      const processdata = data.data.map(item => ({
+        groupid: item.Groupid,
+        userid: item.Userid,
+        username: item.Username
+      }));
+      this.setState({
+        groupOption: processdata[0].groupid,
+        login: 'alice',
+        password: 'alice123'
+      });
+    } catch (error) {
+      console.error('Error fetching options:', error);
+    }
+  };
   render() {
     let submitClasses = 'primary';
     if (this.props.disabled) {
@@ -4974,7 +5158,29 @@ class LoginView extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
     return react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
       id: "login-form",
       onSubmit: this.handleSubmit
-    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "panel-form-row"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_widgets_test_dplist_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      id: "test-dplist"
+    })), react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
+      id: "group_prompt",
+      defaultMessage: [{
+        "type": 0,
+        "value": "Group"
+      }]
+    }, group_prompt => react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      type: "text",
+      id: "groupLogin",
+      readOnly: true,
+      placeholder: group_prompt,
+      autoComplete: "username",
+      autoCorrect: "off",
+      autoCapitalize: "none",
+      value: this.state.groupOption,
+      onChange: this.handleLoginChange,
+      required: true,
+      autoFocus: true
+    })), react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
       id: "login_prompt",
       defaultMessage: [{
         "type": 0,
@@ -4983,6 +5189,7 @@ class LoginView extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
     }, login_prompt => react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
       type: "text",
       id: "inputLogin",
+      readOnly: true,
       placeholder: login_prompt,
       autoComplete: "username",
       autoCorrect: "off",
@@ -4997,9 +5204,10 @@ class LoginView extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
         "type": 0,
         "value": "Password"
       }]
-    }, password_prompt => react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_widgets_visible_password_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    }, password_prompt => react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
       type: "password",
       id: "inputPassword",
+      readOnly: true,
       placeholder: password_prompt,
       autoComplete: "current-password",
       value: this.state.password,
@@ -5032,12 +5240,22 @@ class LoginView extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
       className: "dialog-buttons"
     }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
       className: submitClasses,
-      type: "submit"
+      type: "submit",
+      onClick: this.handleClick
     }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
-      id: "button_sign_in",
+      id: "button_group_in",
       defaultMessage: [{
         "type": 0,
-        "value": "Sign in"
+        "value": "Get Group info"
+      }]
+    })), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      className: submitClasses,
+      type: "submit"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
+      id: "button_admin_in",
+      defaultMessage: [{
+        "type": 0,
+        "value": "Admin Sign in"
       }]
     }))));
   }
@@ -5058,39 +5276,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-intl */ "react-intl");
-/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var tinode_sdk__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tinode-sdk */ "tinode-sdk");
-/* harmony import */ var tinode_sdk__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(tinode_sdk__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../config.js */ "./src/config.js");
-
+/* harmony import */ var tinode_sdk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tinode-sdk */ "tinode-sdk");
+/* harmony import */ var tinode_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(tinode_sdk__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../config.js */ "./src/config.js");
 
 
 
 class LogoView extends (react__WEBPACK_IMPORTED_MODULE_0___default().PureComponent) {
   render() {
-    const version = _config_js__WEBPACK_IMPORTED_MODULE_3__.APP_NAME + ' (' + tinode_sdk__WEBPACK_IMPORTED_MODULE_2__.Tinode.getLibrary() + ')';
+    const version = _config_js__WEBPACK_IMPORTED_MODULE_2__.APP_NAME + ' (' + tinode_sdk__WEBPACK_IMPORTED_MODULE_1__.Tinode.getLibrary() + ')';
+    let submitClasses = 'primary';
+    if (this.props.disabled) {
+      submitClasses += ' disabled';
+    }
     return react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       id: "dummy-view"
     }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
-      href: "https://github.com/tinode/chat/"
+      href: "https://www.pku.edu.cn/"
     }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
       id: "logo",
       alt: "logo",
-      src: "img/logo.svg"
-    }), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Tinode Web")), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
-      id: "label_client",
-      defaultMessage: [{
-        "type": 0,
-        "value": "Client:"
-      }]
-    }), " ", version), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
-      id: "label_server",
-      defaultMessage: [{
-        "type": 0,
-        "value": "Server:"
-      }]
-    }), " ", this.props.serverVersion, " (", this.props.serverAddress, ")")));
+      src: "img/teamwork3.png",
+      style: {
+        width: '300px'
+      }
+    })), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "\u5317\u4EAC\u5927\u5B66\u5408\u4F5C\u89E3\u51B3\u95EE\u9898\u80FD\u529B\u6D4B\u8BC4\u7CFB\u7EDF")));
   }
 }
 ;
@@ -6809,6 +7019,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _widgets_checkbox_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../widgets/checkbox.jsx */ "./src/widgets/checkbox.jsx");
 /* harmony import */ var _widgets_host_selector_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../widgets/host-selector.jsx */ "./src/widgets/host-selector.jsx");
+/* harmony import */ var _admin_view_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./admin-view.jsx */ "./src/views/admin-view.jsx");
+
 
 
 
@@ -6876,7 +7088,7 @@ class SettingsView extends (react__WEBPACK_IMPORTED_MODULE_0___default().PureCom
       id: "settings-form",
       className: "panel-form",
       onSubmit: this.handleSubmit
-    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_admin_view_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "panel-form-row"
     }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
       className: "small"
@@ -15685,6 +15897,67 @@ class TagManager extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component
   }
 }
 ;
+
+/***/ }),
+
+/***/ "./src/widgets/test-dplist.jsx":
+/*!*************************************!*\
+  !*** ./src/widgets/test-dplist.jsx ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-intl */ "react-intl");
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_1__);
+
+
+const TestDropdownList = () => {
+  let submitClasses = 'primary';
+  const [selectedOption, setSelectedOption] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [options, setOptions] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    fetchOptions();
+  }, []);
+  const fetchOptions = async () => {
+    try {
+      const response = await fetch('http://localhost:6060/api/gettestlist');
+      const data = await response.json();
+      console.log(data);
+      const processdata = data.data.map(item => ({
+        id: item.Id,
+        name: item.Name,
+        label: item.Name
+      }));
+      setOptions(processdata);
+    } catch (error) {
+      console.error('Error fetching options:', error);
+    }
+  };
+  const handleSelect = event => {
+    setSelectedOption(event.target.value);
+  };
+  return react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
+    id: "label_test_in",
+    defaultMessage: [{
+      "type": 0,
+      "value": "Get test info"
+    }]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    value: selectedOption,
+    onChange: handleSelect
+  }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: ""
+  }), options.map(option => react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    key: option.id,
+    value: option.value
+  }, option.label))));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TestDropdownList);
 
 /***/ }),
 
