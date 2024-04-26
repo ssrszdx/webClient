@@ -193,7 +193,7 @@
     "defaultMessage": "Update",
     "description": "Button [Update]",
     "missing": false,
-    "obsolete": false
+    "obsolete": true
   },
   "cannot_initiate_file_upload": {
     "translation": "ไม่สามารถอัพโหลดไฟล์",
@@ -375,7 +375,7 @@
     "defaultMessage": "Forgot password?",
     "description": "Link to Reset password form",
     "missing": false,
-    "obsolete": false
+    "obsolete": true
   },
   "full_name_prompt": {
     "translation": "ชื่อเต็ม, เช่น John Doe",
@@ -555,7 +555,7 @@
     "defaultMessage": "Server to use:",
     "description": "Label for server selector in SettingsView",
     "missing": false,
-    "obsolete": false
+    "obsolete": true
   },
   "label_size": {
     "translation": "ขนาด:",
@@ -590,7 +590,7 @@
     "defaultMessage": "Wire transport:",
     "description": "Label for wire transport selection in SettingsView",
     "missing": false,
-    "obsolete": false
+    "obsolete": true
   },
   "label_you": {
     "translation": "คุณ:",
@@ -1415,7 +1415,7 @@
     "defaultMessage": "Use secure connection",
     "description": "Label for WS/WSS connection type in SettingsView",
     "missing": false,
-    "obsolete": false
+    "obsolete": true
   },
   "cred_confirmed_successfully": {
     "translation": "การยืนยันสำเร็จ",
@@ -1674,12 +1674,82 @@
     "defaultMessage": "Get test info",
     "description": "label [Get test info]",
     "missing": true,
-    "obsolete": false
+    "obsolete": true
   },
   "group_prompt": {
     "translation": "",
     "defaultMessage": "Group",
     "description": "Placeholer for group",
+    "missing": true,
+    "obsolete": false
+  },
+  "label_parts_container": {
+    "translation": "",
+    "defaultMessage": "label_parts_container",
+    "description": "label_parts_container",
+    "missing": true,
+    "obsolete": false
+  },
+  "label_test_name": {
+    "translation": "",
+    "defaultMessage": "label_test_name",
+    "description": "label_test_name",
+    "missing": true,
+    "obsolete": false
+  },
+  "part1_do_time": {
+    "translation": "",
+    "defaultMessage": "part1_do_time",
+    "description": "part1_do_time",
+    "missing": true,
+    "obsolete": false
+  },
+  "part1_read_time": {
+    "translation": "",
+    "defaultMessage": "part1_read_time",
+    "description": "part1_read_time",
+    "missing": true,
+    "obsolete": false
+  },
+  "part2_do_time": {
+    "translation": "",
+    "defaultMessage": "part2_do_time",
+    "description": "part2_do_time",
+    "missing": true,
+    "obsolete": false
+  },
+  "part2_read_time": {
+    "translation": "",
+    "defaultMessage": "part2_read_time",
+    "description": "part2_read_time",
+    "missing": true,
+    "obsolete": false
+  },
+  "part3_do_time": {
+    "translation": "",
+    "defaultMessage": "part3_do_time",
+    "description": "part3_do_time",
+    "missing": true,
+    "obsolete": false
+  },
+  "part3_read_time": {
+    "translation": "",
+    "defaultMessage": "part3_read_time",
+    "description": "part3_read_time",
+    "missing": true,
+    "obsolete": false
+  },
+  "button_create_test": {
+    "translation": "",
+    "defaultMessage": "button_create_test",
+    "description": "Button [button_create_test]",
+    "missing": true,
+    "obsolete": false
+  },
+  "label_test_time": {
+    "translation": "",
+    "defaultMessage": "label_test_time",
+    "description": "label_test_time",
     "missing": true,
     "obsolete": false
   }

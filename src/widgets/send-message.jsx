@@ -185,6 +185,7 @@ class SendMessage extends React.PureComponent {
   handleSend(e) {
     e.preventDefault();
     const message = this.state.message.trim();
+    console.error("send-message.jsx------msg="+message);
     if (message || this.props.acceptBlank || this.props.noInput) {
       this.props.onSendMessage(message);
       this.setState({message: ''});

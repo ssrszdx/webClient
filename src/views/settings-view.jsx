@@ -65,6 +65,11 @@ export default class SettingsView extends React.PureComponent {
     return (
       <form id="settings-form" className="panel-form" onSubmit={this.handleSubmit}>
         <AdminSettingsView></AdminSettingsView>
+      </form>
+    );
+  }
+};
+/*
         <div className="panel-form-row">
           <label className="small">
             <FormattedMessage id="label_server_to_use" defaultMessage="Server to use:"
@@ -96,7 +101,5 @@ export default class SettingsView extends React.PureComponent {
               description="Button [Update]" />
           </button>
         </div>
-      </form>
-    );
-  }
-};
+
+*/

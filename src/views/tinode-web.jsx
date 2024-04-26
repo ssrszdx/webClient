@@ -383,7 +383,7 @@ class TinodeWeb extends React.Component {
     const {formatMessage, locale} = this.props.intl;
     const onError = (msg, err) => {
       console.error(msg, err);
-      this.handleError(formatMessage(messages.push_init_failed), 'err');
+      //this.handleError(formatMessage(messages.push_init_failed), 'err');
       this.setState({firebaseToken: null});
       LocalStorageUtil.updateObject('settings', {desktopAlerts: false});
     }
@@ -502,7 +502,7 @@ class TinodeWeb extends React.Component {
     if (hash.path && hash.path.length > 0) {
       // Left-side panel selector.
       if (['register','settings','edit','notif','security','support','general','crop',
-          'cred','reset','newtpk','archive','blocked','contacts',''].includes(hash.path[0])) {
+          'cred','reset','newtpk','archive','blocked','contacts','admin',''].includes(hash.path[0])) {
         newState.sidePanelSelected = hash.path[0];
       } else {
         console.warn("Unknown sidepanel view", hash.path[0]);
@@ -1054,6 +1054,11 @@ class TinodeWeb extends React.Component {
   //  - head - head dictionary to be attached to the message
   handleSendMessage(msg, uploadCompletionPromise, uploader, head) {
     const topic = this.tinode.getTopic(this.state.topicSelected);
+
+    console.error('topic'+topic)
+    console.error('msg'+msg)
+    console.error('this.state.topicSelected'+this.state.topicSelected)
+    console.error(head)
     /* TODO: check if return is required */
     return this.sendMessageToTopic(topic, msg, uploadCompletionPromise, uploader, head);
   }

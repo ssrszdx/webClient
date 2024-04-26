@@ -1,98 +1,169 @@
 // Tinode config panel.
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-
-import CheckBox from '../widgets/checkbox.jsx';
-
-import HostSelector from '../widgets/host-selector.jsx';
+import HashNavigation from '../lib/navigation.js';
+import SendMessage from '../widgets/send-message.jsx';
 
 export default class AdminSettingsView extends React.PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      transport: props.transport || 'def',
-      serverAddress: props.serverAddress,
-      secureConnection: props.secureConnection,
+      selectedOption: '',
+      parts: [
+        { id: 1, value: '1', label: 'part1' },
+        { id: 2, value: '2', label: 'part2' },
+        { id: 3, value: '3', label: 'part3' },     
+        { id: 4, value: '12', label: 'part1,part2' },
+        { id: 5, value: '23', label: 'part2,part3' },
+        { id: 6, value: '13', label: 'part1,part3' },
+        { id: 7, value: '123', label: 'part1,part2,part3' }
+      ]
     };
-
+  
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleTransportSelected = this.handleTransportSelected.bind(this);
-    this.handleServerAddressChange = this.handleServerAddressChange.bind(this);
-    this.handleToggleSecure = this.handleToggleSecure.bind(this);
+    this.handlePartsSelect = this.handlePartsSelect.bind(this);
+    this.handleClick=this.handleClick.bind(this);
   }
+
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.onUpdate({
-      transport: this.state.transport,
-      serverAddress: this.state.serverAddress,
-      secureConnection: this.state.secureConnection,
-    });
-
-
+    const data = new FormData(e.target);
+    const parts = this.state.selectedOption.split(',');
+  
+    const formData = {};
+  for (let key of data.keys()) {
+    formData[key] = data.get(key);
   }
+  
+  
 
-  handleTransportSelected(e) {
-    this.setState({transport: e.currentTarget.value});
-  }
 
-  handleServerAddressChange(name) {
-    this.setState({serverAddress: name});
-  }
+  // Add parts to formData
+  formData.parts = parts;
 
-  handleToggleSecure(e) {
-    this.setState({secureConnection: !this.state.secureConnection});
-  }
-
-  render() {
-    const names = {def: "default", ws: "websocket", lp: "long polling"};
-    const transportOptions = [];
-    ['def', 'ws', 'lp'].map((item) => {
-      const id = 'transport-' + item;
-      const name = names[item];
-      transportOptions.push(
-        <li key={item}>
-          <input type="radio" id={id} name="transport-select" value={item}
-            checked={this.state.transport === item}
-            onChange={this.handleTransportSelected} />
-          <label htmlFor={id}>{name}</label>
-        </li>
-      );
-    });
-
-    return (
-      <form id="settings-form" className="panel-form" onSubmit={this.handleSubmit}>
+  // Send a POST request
+  fetch('http://localhost:6060/api/createtest', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formData)
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      // Handle success
+      console.log('Data added successfully');
+    } else {
+      // Handle error
+      console.error('An error occurred while adding data');
+    }
+  })
+  .catch(error => {
+    // Handle network error
+    console.error('A network error occurred while adding data');
+  });
         
+  }
+
+  handlePartsSelect(e){
+    e.preventDefault();
+  
+    this.setState({selectedOption: e.target.value });
+  }
+
+  handleClick(e){
+    e.preventDefault();
+    //HashNavigation.navigateTo("#");
+
+
+    
+
+  }
+
+
+
+  render() {   
+    return (
+      <form id="admin-settings-form" className="panel-form" onSubmit={this.handleSubmit}>
+      
+        <div className="panel-form-row">        
+          <label className="small">
+            <FormattedMessage id="label_test_name" defaultMessage="label_test_name"
+              description="label_test_name" />
+          </label>
+          <input  type="text" style={{ width: '200px' }} id="testName" name="testName"></input>
+        </div>
         <div className="panel-form-row">
           <label className="small">
-            <FormattedMessage id="label_server_to_use" defaultMessage="Server to use:"
-              description="Label for server selector in SettingsView" />
+            <FormattedMessage id="label_parts_container" defaultMessage="label_parts_container"
+              description="label_parts_container" />
           </label>
+          <select  style={{ width: '200px' }} value={this.state.selectedOption} onChange={this.handlePartsSelect}>
+            <option value=""></option>
+            {this.state.parts.map((option) => (
+              <option key={option.id} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
         </div>
-        <HostSelector serverAddress={this.state.serverAddress} onServerAddressChange={this.handleServerAddressChange} />
-        <div className="panel-form-row">
-          <CheckBox id="secure-connection" name="secure-connection" checked={this.state.secureConnection}
-            className="quoted" onChange={this.handleToggleSecure} /><label htmlFor="secure-connection">
-            <FormattedMessage id="label_use_secure_connection" defaultMessage="Use secure connection"
-              description="Label for WS/WSS connection type in SettingsView" />
+        <div className="panel-form-row">        
+          <label className="small">
+            <FormattedMessage id="label_test_time" defaultMessage="label_test_time"
+              description="label_test_time" />
           </label>
         </div>
         <div className="panel-form-row">
           <label className="small">
-            <FormattedMessage id="label_wire_transport" defaultMessage="Wire transport:"
-              description="Label for wire transport selection in SettingsView" />
+            <FormattedMessage id="part1_read_time" defaultMessage="part1_read_time"
+              description="part1_read_time" />
           </label>
+          <input  type="text" style={{ width: '200px' }} id="part1_read_time" name="part1_read_time"></input>  
         </div>
+        <div className="panel-form-row"> 
+          <label className="small">
+            <FormattedMessage id="part1_do_time" defaultMessage="part1_do_time"
+              description="part1_do_time" />
+          </label>
+          <input  type="text" style={{ width: '200px' }} id="part1_do_time" name="part1_do_time"></input>                 
+        </div>        
         <div className="panel-form-row">
-          <ul className="quoted">
-            {transportOptions}
-          </ul>
+          <label className="small">
+            <FormattedMessage id="part2_read_time" defaultMessage="part2_read_time"
+              description="part2_read_time" />
+          </label>
+          <input  type="text" style={{ width: '200px' }} id="part2_read_time" name="part2_read_time"></input>  
         </div>
+        <div className="panel-form-row"> 
+          <label className="small">
+            <FormattedMessage id="part2_do_time" defaultMessage="part2_do_time"
+              description="part2_do_time" />
+          </label>
+          <input  type="text" style={{ width: '200px' }} id="part2_do_time" name="part2_do_time"></input>                 
+        </div>
+
+        <div className="panel-form-row">
+          <label className="small">
+            <FormattedMessage id="part3_read_time" defaultMessage="part3_read_time"
+              description="part3_read_time" />
+          </label>
+          <input  type="text" style={{ width: '200px' }} id="part3_read_time" name="part3_read_time"></input>  
+        </div>
+        <div className="panel-form-row"> 
+          <label className="small">
+            <FormattedMessage id="part3_do_time" defaultMessage="part3_do_time"
+              description="part3_do_time" />
+          </label>
+          <input  type="text"  style={{ width: '200px' }} id="part3_do_time" name="part3_do_time"></input>                 
+        </div>
+
         <div className="dialog-buttons">
-          <button type="submit" className="primary">
-            <FormattedMessage id="button_update" defaultMessage="Update"
-              description="Button [Update]" />
+          <button type="submit" className="primary" onClick={this.handleClick}>
+            <FormattedMessage id="button_create_test" defaultMessage="button_create_test"
+              description="Button [button_create_test]" />
           </button>
         </div>
       </form>

@@ -193,7 +193,7 @@
     "defaultMessage": "Update",
     "description": "Button [Update]",
     "missing": false,
-    "obsolete": false
+    "obsolete": true
   },
   "cannot_initiate_file_upload": {
     "translation": "无法初始化文件上传。",
@@ -375,7 +375,7 @@
     "defaultMessage": "Forgot password?",
     "description": "Link to Reset password form",
     "missing": false,
-    "obsolete": false
+    "obsolete": true
   },
   "full_name_prompt": {
     "translation": "全名，例如张伟",
@@ -555,7 +555,7 @@
     "defaultMessage": "Server to use:",
     "description": "Label for server selector in SettingsView",
     "missing": false,
-    "obsolete": false
+    "obsolete": true
   },
   "label_size": {
     "translation": "大小：",
@@ -590,7 +590,7 @@
     "defaultMessage": "Wire transport:",
     "description": "Label for wire transport selection in SettingsView",
     "missing": false,
-    "obsolete": false
+    "obsolete": true
   },
   "label_you": {
     "translation": "你：",
@@ -1415,7 +1415,7 @@
     "defaultMessage": "Use secure connection",
     "description": "Label for WS/WSS connection type in SettingsView",
     "missing": false,
-    "obsolete": false
+    "obsolete": true
   },
   "cred_confirmed_successfully": {
     "translation": "确认成功",
@@ -1674,12 +1674,82 @@
     "defaultMessage": "Get test info",
     "description": "label [Get test info]",
     "missing": false,
-    "obsolete": false
+    "obsolete": true
   },
   "group_prompt": {
     "translation": "组号",
     "defaultMessage": "Group",
     "description": "Placeholer for group",
+    "missing": false,
+    "obsolete": false
+  },
+  "label_parts_container": {
+    "translation": "包含场景",
+    "defaultMessage": "label_parts_container",
+    "description": "label_parts_container",
+    "missing": false,
+    "obsolete": false
+  },
+  "label_test_name": {
+    "translation": "测评名称",
+    "defaultMessage": "label_test_name",
+    "description": "label_test_name",
+    "missing": false,
+    "obsolete": false
+  },
+  "part1_do_time": {
+    "translation": "part1做题",
+    "defaultMessage": "part1_do_time",
+    "description": "part1_do_time",
+    "missing": false,
+    "obsolete": false
+  },
+  "part1_read_time": {
+    "translation": "part1读题",
+    "defaultMessage": "part1_read_time",
+    "description": "part1_read_time",
+    "missing": false,
+    "obsolete": false
+  },
+  "part2_do_time": {
+    "translation": "part2做题",
+    "defaultMessage": "part2_do_time",
+    "description": "part2_do_time",
+    "missing": false,
+    "obsolete": false
+  },
+  "part2_read_time": {
+    "translation": "part2读题",
+    "defaultMessage": "part2_read_time",
+    "description": "part2_read_time",
+    "missing": false,
+    "obsolete": false
+  },
+  "part3_do_time": {
+    "translation": "part3做题",
+    "defaultMessage": "part3_do_time",
+    "description": "part3_do_time",
+    "missing": false,
+    "obsolete": false
+  },
+  "part3_read_time": {
+    "translation": "part3读题",
+    "defaultMessage": "part3_read_time",
+    "description": "part3_read_time",
+    "missing": false,
+    "obsolete": false
+  },
+  "button_create_test": {
+    "translation": "创建测试",
+    "defaultMessage": "button_create_test",
+    "description": "Button [button_create_test]",
+    "missing": false,
+    "obsolete": false
+  },
+  "label_test_time": {
+    "translation": "场景时间(单位：分钟)",
+    "defaultMessage": "label_test_time",
+    "description": "label_test_time",
     "missing": false,
     "obsolete": false
   }

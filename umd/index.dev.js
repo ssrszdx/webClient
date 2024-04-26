@@ -4057,9 +4057,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-intl */ "react-intl");
 /* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _widgets_checkbox_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../widgets/checkbox.jsx */ "./src/widgets/checkbox.jsx");
-/* harmony import */ var _widgets_host_selector_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../widgets/host-selector.jsx */ "./src/widgets/host-selector.jsx");
-
+/* harmony import */ var _lib_navigation_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../lib/navigation.js */ "./src/lib/navigation.js");
 
 
 
@@ -4067,126 +4065,241 @@ class AdminSettingsView extends (react__WEBPACK_IMPORTED_MODULE_0___default().Pu
   constructor(props) {
     super(props);
     this.state = {
-      transport: props.transport || 'def',
-      serverAddress: props.serverAddress,
-      secureConnection: props.secureConnection
+      selectedOption: '',
+      parts: [{
+        id: 1,
+        value: '1',
+        label: 'part1'
+      }, {
+        id: 2,
+        value: '2',
+        label: 'part2'
+      }, {
+        id: 3,
+        value: '3',
+        label: 'part3'
+      }, {
+        id: 4,
+        value: '12',
+        label: 'part1,part2'
+      }, {
+        id: 5,
+        value: '23',
+        label: 'part2,part3'
+      }, {
+        id: 6,
+        value: '13',
+        label: 'part1,part3'
+      }, {
+        id: 7,
+        value: '123',
+        label: 'part1,part2,part3'
+      }]
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleTransportSelected = this.handleTransportSelected.bind(this);
-    this.handleServerAddressChange = this.handleServerAddressChange.bind(this);
-    this.handleToggleSecure = this.handleToggleSecure.bind(this);
+    this.handlePartsSelect = this.handlePartsSelect.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
   handleSubmit(e) {
     e.preventDefault();
-    this.props.onUpdate({
-      transport: this.state.transport,
-      serverAddress: this.state.serverAddress,
-      secureConnection: this.state.secureConnection
+    const data = new FormData(e.target);
+    const parts = this.state.selectedOption.split(',');
+    const formData = {};
+    for (let key of data.keys()) {
+      formData[key] = data.get(key);
+    }
+    formData.parts = parts;
+    fetch('http://localhost:6060/api/createtest', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    }).then(response => response.json()).then(data => {
+      if (data.success) {
+        console.log('Data added successfully');
+      } else {
+        console.error('An error occurred while adding data');
+      }
+    }).catch(error => {
+      console.error('A network error occurred while adding data');
     });
   }
-  handleTransportSelected(e) {
+  handlePartsSelect(e) {
+    e.preventDefault();
     this.setState({
-      transport: e.currentTarget.value
+      selectedOption: e.target.value
     });
   }
-  handleServerAddressChange(name) {
-    this.setState({
-      serverAddress: name
-    });
-  }
-  handleToggleSecure(e) {
-    this.setState({
-      secureConnection: !this.state.secureConnection
-    });
+  handleClick(e) {
+    e.preventDefault();
   }
   render() {
-    const names = {
-      def: "default",
-      ws: "websocket",
-      lp: "long polling"
-    };
-    const transportOptions = [];
-    ['def', 'ws', 'lp'].map(item => {
-      const id = 'transport-' + item;
-      const name = names[item];
-      transportOptions.push(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
-        key: item
-      }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-        type: "radio",
-        id: id,
-        name: "transport-select",
-        value: item,
-        checked: this.state.transport === item,
-        onChange: this.handleTransportSelected
-      }), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
-        htmlFor: id
-      }, name)));
-    });
     return react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
-      id: "settings-form",
+      id: "admin-settings-form",
       className: "panel-form",
       onSubmit: this.handleSubmit
-    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
-      className: "small"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
-      id: "label_server_to_use",
-      defaultMessage: [{
-        "type": 0,
-        "value": "Server to use:"
-      }]
-    }))), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "panel-form-row"
     }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
       className: "small"
     }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
-      id: "label_server_to_use",
+      id: "label_test_name",
       defaultMessage: [{
         "type": 0,
-        "value": "Server to use:"
+        "value": "label_test_name"
       }]
-    }))), react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_widgets_host_selector_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      serverAddress: this.state.serverAddress,
-      onServerAddressChange: this.handleServerAddressChange
-    }), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    })), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      type: "text",
+      style: {
+        width: '200px'
+      },
+      id: "testName",
+      name: "testName"
+    })), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "panel-form-row"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_widgets_checkbox_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      id: "secure-connection",
-      name: "secure-connection",
-      checked: this.state.secureConnection,
-      className: "quoted",
-      onChange: this.handleToggleSecure
-    }), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
-      htmlFor: "secure-connection"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+      className: "small"
     }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
-      id: "label_use_secure_connection",
+      id: "label_parts_container",
       defaultMessage: [{
         "type": 0,
-        "value": "Use secure connection"
+        "value": "label_parts_container"
+      }]
+    })), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+      style: {
+        width: '200px'
+      },
+      value: this.state.selectedOption,
+      onChange: this.handlePartsSelect
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+      value: ""
+    }), this.state.parts.map(option => react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+      key: option.id,
+      value: option.value
+    }, option.label)))), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "panel-form-row"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+      className: "small"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
+      id: "label_test_time",
+      defaultMessage: [{
+        "type": 0,
+        "value": "label_test_time"
       }]
     }))), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "panel-form-row"
     }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
       className: "small"
     }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
-      id: "label_wire_transport",
+      id: "part1_read_time",
       defaultMessage: [{
         "type": 0,
-        "value": "Wire transport:"
+        "value": "part1_read_time"
       }]
-    }))), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    })), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      type: "text",
+      style: {
+        width: '200px'
+      },
+      id: "part1_read_time",
+      name: "part1_read_time"
+    })), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "panel-form-row"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", {
-      className: "quoted"
-    }, transportOptions)), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+      className: "small"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
+      id: "part1_do_time",
+      defaultMessage: [{
+        "type": 0,
+        "value": "part1_do_time"
+      }]
+    })), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      type: "text",
+      style: {
+        width: '200px'
+      },
+      id: "part1_do_time",
+      name: "part1_do_time"
+    })), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "panel-form-row"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+      className: "small"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
+      id: "part2_read_time",
+      defaultMessage: [{
+        "type": 0,
+        "value": "part2_read_time"
+      }]
+    })), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      type: "text",
+      style: {
+        width: '200px'
+      },
+      id: "part2_read_time",
+      name: "part2_read_time"
+    })), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "panel-form-row"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+      className: "small"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
+      id: "part2_do_time",
+      defaultMessage: [{
+        "type": 0,
+        "value": "part2_do_time"
+      }]
+    })), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      type: "text",
+      style: {
+        width: '200px'
+      },
+      id: "part2_do_time",
+      name: "part2_do_time"
+    })), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "panel-form-row"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+      className: "small"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
+      id: "part3_read_time",
+      defaultMessage: [{
+        "type": 0,
+        "value": "part3_read_time"
+      }]
+    })), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      type: "text",
+      style: {
+        width: '200px'
+      },
+      id: "part3_read_time",
+      name: "part3_read_time"
+    })), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "panel-form-row"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+      className: "small"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
+      id: "part3_do_time",
+      defaultMessage: [{
+        "type": 0,
+        "value": "part3_do_time"
+      }]
+    })), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      type: "text",
+      style: {
+        width: '200px'
+      },
+      id: "part3_do_time",
+      name: "part3_do_time"
+    })), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "dialog-buttons"
     }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
       type: "submit",
-      className: "primary"
+      className: "primary",
+      onClick: this.handleClick
     }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
-      id: "button_update",
+      id: "button_create_test",
       defaultMessage: [{
         "type": 0,
-        "value": "Update"
+        "value": "button_create_test"
       }]
     }))));
   }
@@ -5158,9 +5271,7 @@ class LoginView extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
     return react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
       id: "login-form",
       onSubmit: this.handleSubmit
-    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-      className: "panel-form-row"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_widgets_test_dplist_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_widgets_test_dplist_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
       id: "test-dplist"
     })), react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
       id: "group_prompt",
@@ -5170,6 +5281,9 @@ class LoginView extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
       }]
     }, group_prompt => react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
       type: "text",
+      style: {
+        width: '200px'
+      },
       id: "groupLogin",
       readOnly: true,
       placeholder: group_prompt,
@@ -5188,8 +5302,10 @@ class LoginView extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
       }]
     }, login_prompt => react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
       type: "text",
+      style: {
+        width: '200px'
+      },
       id: "inputLogin",
-      readOnly: true,
       placeholder: login_prompt,
       autoComplete: "username",
       autoCorrect: "off",
@@ -5206,37 +5322,16 @@ class LoginView extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
       }]
     }, password_prompt => react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
       type: "password",
+      style: {
+        width: '200px'
+      },
       id: "inputPassword",
-      readOnly: true,
       placeholder: password_prompt,
       autoComplete: "current-password",
       value: this.state.password,
       onChange: this.handlePasswordChange,
       required: true
     })), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-      className: "panel-form-row"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_widgets_checkbox_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      id: "save-token",
-      name: "save-token",
-      checked: this.state.saveToken,
-      onChange: this.handleToggleSaveToken
-    }), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
-      htmlFor: "save-token"
-    }, "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
-      id: "stay_logged_in",
-      defaultMessage: [{
-        "type": 0,
-        "value": "Stay logged in"
-      }]
-    })), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
-      href: "#reset"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
-      id: "forgot_password_link",
-      defaultMessage: [{
-        "type": 0,
-        "value": "Forgot password?"
-      }]
-    }))), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "dialog-buttons"
     }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
       className: submitClasses,
@@ -7088,61 +7183,7 @@ class SettingsView extends (react__WEBPACK_IMPORTED_MODULE_0___default().PureCom
       id: "settings-form",
       className: "panel-form",
       onSubmit: this.handleSubmit
-    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_admin_view_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-      className: "panel-form-row"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
-      className: "small"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
-      id: "label_server_to_use",
-      defaultMessage: [{
-        "type": 0,
-        "value": "Server to use:"
-      }]
-    }))), react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_widgets_host_selector_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      serverAddress: this.state.serverAddress,
-      onServerAddressChange: this.handleServerAddressChange
-    }), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-      className: "panel-form-row"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_widgets_checkbox_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      id: "secure-connection",
-      name: "secure-connection",
-      checked: this.state.secureConnection,
-      className: "quoted",
-      onChange: this.handleToggleSecure
-    }), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
-      htmlFor: "secure-connection"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
-      id: "label_use_secure_connection",
-      defaultMessage: [{
-        "type": 0,
-        "value": "Use secure connection"
-      }]
-    }))), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-      className: "panel-form-row"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
-      className: "small"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
-      id: "label_wire_transport",
-      defaultMessage: [{
-        "type": 0,
-        "value": "Wire transport:"
-      }]
-    }))), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-      className: "panel-form-row"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", {
-      className: "quoted"
-    }, transportOptions)), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-      className: "dialog-buttons"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-      type: "submit",
-      className: "primary"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
-      id: "button_update",
-      defaultMessage: [{
-        "type": 0,
-        "value": "Update"
-      }]
-    }))));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_admin_view_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], null));
   }
 }
 ;
@@ -7847,7 +7888,6 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
     } = this.props.intl;
     const onError = (msg, err) => {
       console.error(msg, err);
-      this.handleError(formatMessage(messages.push_init_failed), 'err');
       this.setState({
         firebaseToken: null
       });
@@ -7969,7 +8009,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
       newTopicTabSelected: hash.params.tab
     };
     if (hash.path && hash.path.length > 0) {
-      if (['register', 'settings', 'edit', 'notif', 'security', 'support', 'general', 'crop', 'cred', 'reset', 'newtpk', 'archive', 'blocked', 'contacts', ''].includes(hash.path[0])) {
+      if (['register', 'settings', 'edit', 'notif', 'security', 'support', 'general', 'crop', 'cred', 'reset', 'newtpk', 'archive', 'blocked', 'contacts', 'admin', ''].includes(hash.path[0])) {
         newState.sidePanelSelected = hash.path[0];
       } else {
         console.warn("Unknown sidepanel view", hash.path[0]);
@@ -8422,6 +8462,10 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
   }
   handleSendMessage(msg, uploadCompletionPromise, uploader, head) {
     const topic = this.tinode.getTopic(this.state.topicSelected);
+    console.error('topic' + topic);
+    console.error('msg' + msg);
+    console.error('this.state.topicSelected' + this.state.topicSelected);
+    console.error(head);
     return this.sendMessageToTopic(topic, msg, uploadCompletionPromise, uploader, head);
   }
   sendMessageToTopic(topic, msg, uploadCompletionPromise, uploader, head) {
@@ -15417,6 +15461,7 @@ class SendMessage extends (react__WEBPACK_IMPORTED_MODULE_0___default().PureComp
   handleSend(e) {
     e.preventDefault();
     const message = this.state.message.trim();
+    console.error("send-message.jsx------msg=" + message);
     if (message || this.props.acceptBlank || this.props.noInput) {
       this.props.onSendMessage(message);
       this.setState({
@@ -15941,13 +15986,10 @@ const TestDropdownList = () => {
   const handleSelect = event => {
     setSelectedOption(event.target.value);
   };
-  return react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
-    id: "label_test_in",
-    defaultMessage: [{
-      "type": 0,
-      "value": "Get test info"
-    }]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+  return react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    style: {
+      width: '200px'
+    },
     value: selectedOption,
     onChange: handleSelect
   }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {

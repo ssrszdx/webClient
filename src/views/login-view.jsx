@@ -6,6 +6,18 @@ import CheckBox from '../widgets/checkbox.jsx';
 import VisiblePassword from '../widgets/visible-password.jsx';
 import TestDropdownList from '../widgets/test-dplist.jsx';
 
+     /* <div className="panel-form-row">
+          <CheckBox id="save-token" name="save-token" checked={this.state.saveToken}
+            onChange={this.handleToggleSaveToken} />
+          <label htmlFor="save-token">&nbsp;
+            <FormattedMessage id="stay_logged_in" defaultMessage="Stay logged in"
+              description="Label for a checkbox" />
+          </label>
+          <a href="#reset">
+            <FormattedMessage id="forgot_password_link" defaultMessage="Forgot password?"
+              description="Link to Reset password form" />
+          </a>
+        </div>*/
 export default class LoginView extends React.Component {
   constructor(props) {
     super(props);
@@ -85,14 +97,14 @@ export default class LoginView extends React.Component {
     return (
       <form id="login-form" onSubmit={this.handleSubmit}>
 
-        <div  className="panel-form-row">
+        <div>
           <TestDropdownList id="test-dplist" />       
         </div>
 
         <FormattedMessage id="group_prompt" defaultMessage="Group"
           description="Placeholer for group">
         {
-          (group_prompt) => <input type="text" id="groupLogin" readOnly 
+          (group_prompt) => <input type="text"  style={{ width: '200px' }} id="groupLogin" readOnly 
             placeholder={group_prompt}
             autoComplete="username"
             autoCorrect="off"
@@ -106,7 +118,7 @@ export default class LoginView extends React.Component {
         <FormattedMessage id="login_prompt" defaultMessage="Login"
           description="Placeholer for username/login">
         {
-          (login_prompt) => <input type="text" id="inputLogin" readOnly 
+          (login_prompt) => <input type="text"  style={{ width: '200px' }} id="inputLogin" 
             placeholder={login_prompt}
             autoComplete="username"
             autoCorrect="off"
@@ -119,7 +131,7 @@ export default class LoginView extends React.Component {
         <FormattedMessage id="password_prompt" defaultMessage="Password"
           description="Placeholder/prompt for entering password">
         {
-          (password_prompt) => <input type="password" id="inputPassword"  readOnly 
+          (password_prompt) => <input type="password"  style={{ width: '200px' }} id="inputPassword"
             placeholder={password_prompt}
             autoComplete="current-password"
             value={this.state.password}
@@ -127,18 +139,7 @@ export default class LoginView extends React.Component {
             required={true} />
         }
         </FormattedMessage>
-        <div className="panel-form-row">
-          <CheckBox id="save-token" name="save-token" checked={this.state.saveToken}
-            onChange={this.handleToggleSaveToken} />
-          <label htmlFor="save-token">&nbsp;
-            <FormattedMessage id="stay_logged_in" defaultMessage="Stay logged in"
-              description="Label for a checkbox" />
-          </label>
-          <a href="#reset">
-            <FormattedMessage id="forgot_password_link" defaultMessage="Forgot password?"
-              description="Link to Reset password form" />
-          </a>
-        </div>
+
         <div className="dialog-buttons">
           <button className={submitClasses} type="submit" onClick={this.handleClick} >
             <FormattedMessage id="button_group_in" defaultMessage="Get Group info"

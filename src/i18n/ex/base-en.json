@@ -79,6 +79,10 @@
     "defaultMessage": "Create",
     "description": "Button [Create]"
   },
+  "button_create_test": {
+    "defaultMessage": "button_create_test",
+    "description": "Button [button_create_test]"
+  },
   "button_delete_account": {
     "defaultMessage": "Delete account",
     "description": "Button [Delete account]"
@@ -118,10 +122,6 @@
   "button_subscribe": {
     "defaultMessage": "Subscribe",
     "description": "Button [Subscribe]"
-  },
-  "button_update": {
-    "defaultMessage": "Update",
-    "description": "Button [Update]"
   },
   "call_busy": {
     "defaultMessage": "busy",
@@ -303,10 +303,6 @@
     "defaultMessage": "The file size {size} exceeds the {limit} limit.",
     "description": "Error message when attachment is too large"
   },
-  "forgot_password_link": {
-    "defaultMessage": "Forgot password?",
-    "description": "Link to Reset password form"
-  },
   "forward_to": {
     "defaultMessage": "Forward to"
   },
@@ -422,6 +418,10 @@
     "defaultMessage": "Other",
     "description": "Label for the other user when the user is unnamed"
   },
+  "label_parts_container": {
+    "defaultMessage": "label_parts_container",
+    "description": "label_parts_container"
+  },
   "label_password": {
     "defaultMessage": "Password",
     "description": "Label for password editing"
@@ -460,17 +460,17 @@
   "label_server_address": {
     "defaultMessage": "Server address:"
   },
-  "label_server_to_use": {
-    "defaultMessage": "Server to use:",
-    "description": "Label for server selector in SettingsView"
-  },
   "label_size": {
     "defaultMessage": "Size:",
     "description": "Label for file size"
   },
-  "label_test_in": {
-    "defaultMessage": "Get test info",
-    "description": "label [Get test info]"
+  "label_test_name": {
+    "defaultMessage": "label_test_name",
+    "description": "label_test_name"
+  },
+  "label_test_time": {
+    "defaultMessage": "label_test_time",
+    "description": "label_test_time"
   },
   "label_topic_name": {
     "defaultMessage": "Name",
@@ -480,10 +480,6 @@
     "defaultMessage": "Archived:",
     "description": "Label for unarchiving the topic"
   },
-  "label_use_secure_connection": {
-    "defaultMessage": "Use secure connection",
-    "description": "Label for WS/WSS connection type in SettingsView"
-  },
   "label_user_contacts": {
     "defaultMessage": "Contacts",
     "description": "Label for user contacts"
@@ -491,10 +487,6 @@
   "label_user_id": {
     "defaultMessage": "ID:",
     "description": "Label for user address (ID)"
-  },
-  "label_wire_transport": {
-    "defaultMessage": "Wire transport:",
-    "description": "Label for wire transport selection in SettingsView"
   },
   "label_you": {
     "defaultMessage": "You:",
@@ -699,6 +691,30 @@
   "panel_title_security": {
     "defaultMessage": "Security",
     "description": "Title for TopicSecirity and AccSecurity."
+  },
+  "part1_do_time": {
+    "defaultMessage": "part1_do_time",
+    "description": "part1_do_time"
+  },
+  "part1_read_time": {
+    "defaultMessage": "part1_read_time",
+    "description": "part1_read_time"
+  },
+  "part2_do_time": {
+    "defaultMessage": "part2_do_time",
+    "description": "part2_do_time"
+  },
+  "part2_read_time": {
+    "defaultMessage": "part2_read_time",
+    "description": "part2_read_time"
+  },
+  "part3_do_time": {
+    "defaultMessage": "part3_do_time",
+    "description": "part3_do_time"
+  },
+  "part3_read_time": {
+    "defaultMessage": "part3_read_time",
+    "description": "part3_read_time"
   },
   "password_i_have_code": {
     "defaultMessage": "I have code",

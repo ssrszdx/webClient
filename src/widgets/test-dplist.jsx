@@ -32,14 +32,11 @@ const TestDropdownList = () => {
     const handleSelect = (event) => {
         setSelectedOption(event.target.value);
     };
-
    
 
     return (
         <div>
-            <FormattedMessage id="label_test_in" defaultMessage="Get test info"
-              description="label [Get test info]" />
-            <select value={selectedOption} onChange={handleSelect}>
+            <select  style={{ width: '200px' }} value={selectedOption} onChange={handleSelect}>
                 <option value=""></option>
                 {options.map((option) => (
                     <option key={option.id} value={option.value}>
