@@ -4058,6 +4058,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-intl */ "react-intl");
 /* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _lib_navigation_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../lib/navigation.js */ "./src/lib/navigation.js");
+/* harmony import */ var _test_view_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./test-view.jsx */ "./src/views/test-view.jsx");
+
 
 
 
@@ -4100,6 +4102,7 @@ class AdminSettingsView extends (react__WEBPACK_IMPORTED_MODULE_0___default().Pu
     this.handlePartsSelect = this.handlePartsSelect.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
+  componentDidMount() {}
   handleSubmit(e) {
     e.preventDefault();
     const data = new FormData(e.target);
@@ -4133,6 +4136,7 @@ class AdminSettingsView extends (react__WEBPACK_IMPORTED_MODULE_0___default().Pu
   }
   handleClick(e) {
     e.preventDefault();
+    _lib_navigation_js__WEBPACK_IMPORTED_MODULE_2__["default"].navigateTo("#register");
   }
   render() {
     return react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
@@ -4301,7 +4305,7 @@ class AdminSettingsView extends (react__WEBPACK_IMPORTED_MODULE_0___default().Pu
         "type": 0,
         "value": "button_create_test"
       }]
-    }))));
+    }))), react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_test_view_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], null));
   }
 }
 ;
@@ -7508,6 +7512,43 @@ class SidepanelView extends (react__WEBPACK_IMPORTED_MODULE_0___default().PureCo
 
 /***/ }),
 
+/***/ "./src/views/test-view.jsx":
+/*!*********************************!*\
+  !*** ./src/views/test-view.jsx ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+class TestView extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick = () => {
+    this.props.handleTopicSelected("grp0J5IIvmaIs0");
+    this.props.sendMessage("123456789");
+  };
+  render() {
+    return react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "dialog-buttons"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      type: "submit",
+      className: "primary",
+      onClick: this.handleClick
+    }, "test button"));
+  }
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TestView);
+
+/***/ }),
+
 /***/ "./src/views/tinode-web.jsx":
 /*!**********************************!*\
   !*** ./src/views/tinode-web.jsx ***!
@@ -7533,15 +7574,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _info_view_jsx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./info-view.jsx */ "./src/views/info-view.jsx");
 /* harmony import */ var _messages_view_jsx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./messages-view.jsx */ "./src/views/messages-view.jsx");
 /* harmony import */ var _sidepanel_view_jsx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./sidepanel-view.jsx */ "./src/views/sidepanel-view.jsx");
-/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../config.js */ "./src/config.js");
-/* harmony import */ var _constants_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../constants.js */ "./src/constants.js");
-/* harmony import */ var _version_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../version.js */ "./src/version.js");
-/* harmony import */ var _lib_blob_helpers_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../lib/blob-helpers.js */ "./src/lib/blob-helpers.js");
-/* harmony import */ var _lib_host_name_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../lib/host-name.js */ "./src/lib/host-name.js");
-/* harmony import */ var _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../lib/local-storage.js */ "./src/lib/local-storage.js");
-/* harmony import */ var _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../lib/navigation.js */ "./src/lib/navigation.js");
-/* harmony import */ var _lib_strformat_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../lib/strformat.js */ "./src/lib/strformat.js");
-/* harmony import */ var _lib_utils_js__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../lib/utils.js */ "./src/lib/utils.js");
+/* harmony import */ var _test_view_jsx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./test-view.jsx */ "./src/views/test-view.jsx");
+/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../config.js */ "./src/config.js");
+/* harmony import */ var _constants_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../constants.js */ "./src/constants.js");
+/* harmony import */ var _version_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../version.js */ "./src/version.js");
+/* harmony import */ var _lib_blob_helpers_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../lib/blob-helpers.js */ "./src/lib/blob-helpers.js");
+/* harmony import */ var _lib_host_name_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../lib/host-name.js */ "./src/lib/host-name.js");
+/* harmony import */ var _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../lib/local-storage.js */ "./src/lib/local-storage.js");
+/* harmony import */ var _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../lib/navigation.js */ "./src/lib/navigation.js");
+/* harmony import */ var _lib_strformat_js__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../lib/strformat.js */ "./src/lib/strformat.js");
+/* harmony import */ var _lib_utils_js__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../lib/utils.js */ "./src/lib/utils.js");
 
 
 
@@ -7552,6 +7594,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const PhoneCountrySelector = react__WEBPACK_IMPORTED_MODULE_0___default().lazy(_ => __webpack_require__.e(/*! import() */ "src_widgets_phone-country-selector_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ../widgets/phone-country-selector.jsx */ "./src/widgets/phone-country-selector.jsx")));
+
 
 
 
@@ -7738,21 +7781,21 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
     this.callTimeoutTimer = null;
   }
   getBlankState() {
-    const settings = _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_17__["default"].getObject('settings') || {};
-    const persist = !!_lib_local_storage_js__WEBPACK_IMPORTED_MODULE_17__["default"].getObject('keep-logged-in');
+    const settings = _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_18__["default"].getObject('settings') || {};
+    const persist = !!_lib_local_storage_js__WEBPACK_IMPORTED_MODULE_18__["default"].getObject('keep-logged-in');
     return {
       connected: false,
       ready: false,
       autoLogin: false,
       transport: settings.transport || null,
-      serverAddress: settings.serverAddress || (0,_lib_host_name_js__WEBPACK_IMPORTED_MODULE_16__.detectServerAddress)(),
-      secureConnection: settings.secureConnection === undefined ? (0,_lib_host_name_js__WEBPACK_IMPORTED_MODULE_16__.isSecureConnection)() : settings.secureConnection,
+      serverAddress: settings.serverAddress || (0,_lib_host_name_js__WEBPACK_IMPORTED_MODULE_17__.detectServerAddress)(),
+      secureConnection: settings.secureConnection === undefined ? (0,_lib_host_name_js__WEBPACK_IMPORTED_MODULE_17__.isSecureConnection)() : settings.secureConnection,
       serverVersion: "no connection",
       messageSounds: !settings.messageSoundsOff,
       incognitoMode: false,
       desktopAlerts: persist && !!settings.desktopAlerts,
-      desktopAlertsEnabled: ((0,_lib_host_name_js__WEBPACK_IMPORTED_MODULE_16__.isSecureConnection)() || (0,_lib_host_name_js__WEBPACK_IMPORTED_MODULE_16__.isLocalHost)()) && typeof firebase_app__WEBPACK_IMPORTED_MODULE_2__.initializeApp != 'undefined' && typeof navigator != 'undefined' && typeof FIREBASE_INIT != 'undefined',
-      firebaseToken: persist ? _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_17__["default"].getObject('firebase-token') : null,
+      desktopAlertsEnabled: ((0,_lib_host_name_js__WEBPACK_IMPORTED_MODULE_17__.isSecureConnection)() || (0,_lib_host_name_js__WEBPACK_IMPORTED_MODULE_17__.isLocalHost)()) && typeof firebase_app__WEBPACK_IMPORTED_MODULE_2__.initializeApp != 'undefined' && typeof navigator != 'undefined' && typeof FIREBASE_INIT != 'undefined',
+      firebaseToken: persist ? _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_18__["default"].getObject('firebase-token') : null,
       applicationVisible: !document.hidden,
       errorText: '',
       errorLevel: null,
@@ -7773,11 +7816,11 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
       topicSelectedAcs: null,
       newTopicParams: null,
       loginDisabled: false,
-      displayMobile: window.innerWidth <= _config_js__WEBPACK_IMPORTED_MODULE_12__.MEDIA_BREAKPOINT,
+      displayMobile: window.innerWidth <= _config_js__WEBPACK_IMPORTED_MODULE_13__.MEDIA_BREAKPOINT,
       infoPanel: undefined,
       mobilePanel: 'sidepanel',
       callTopic: undefined,
-      callState: _constants_js__WEBPACK_IMPORTED_MODULE_13__.CALL_STATE_NONE,
+      callState: _constants_js__WEBPACK_IMPORTED_MODULE_14__.CALL_STATE_NONE,
       callAudioOnly: undefined,
       callShouldStart: false,
       contextMenuVisible: false,
@@ -7788,6 +7831,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
       forwardDialogVisible: false,
       forwardMessage: null,
       alertVisible: false,
+      testVisible: true,
       alertParams: {},
       chatList: [],
       searchResults: [],
@@ -7822,7 +7866,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
       viewportHeight: document.documentElement.clientHeight
     });
     new Promise((resolve, reject) => {
-      this.tinode = TinodeWeb.tnSetup(this.state.serverAddress, (0,_lib_host_name_js__WEBPACK_IMPORTED_MODULE_16__.isSecureConnection)(), this.state.transport, this.props.intl.locale, this.state.persist, resolve);
+      this.tinode = TinodeWeb.tnSetup(this.state.serverAddress, (0,_lib_host_name_js__WEBPACK_IMPORTED_MODULE_17__.isSecureConnection)(), this.state.transport, this.props.intl.locale, this.state.persist, resolve);
       this.tinode.onConnect = this.handleConnected;
       this.tinode.onDisconnect = this.handleDisconnect;
       this.tinode.onAutoreconnectIteration = this.handleAutoreconnectIteration;
@@ -7833,7 +7877,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
         this.initFCMessaging().catch(_ => {});
       }
       this.resetContactList();
-      const token = this.state.persist ? _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_17__["default"].getObject('auth-token') : undefined;
+      const token = this.state.persist ? _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_18__["default"].getObject('auth-token') : undefined;
       if (token) {
         this.setState({
           autoLogin: true
@@ -7846,13 +7890,13 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
       }
       this.readTimer = null;
       this.readTimerCallback = null;
-      const parsedNav = _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].parseUrlHash(window.location.hash);
+      const parsedNav = _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].parseUrlHash(window.location.hash);
       if (!['cred', 'reset', 'register'].includes(parsedNav.path[0])) {
         this.setState({
           requestedTopic: parsedNav.path[1]
         });
-        const path = parsedNav.params && parsedNav.params.cred_done ? _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].addUrlParam('', 'cred_done', parsedNav.params.cred_done) : '';
-        _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].navigateTo(path);
+        const path = parsedNav.params && parsedNav.params.cred_done ? _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].addUrlParam('', 'cred_done', parsedNav.params.cred_done) : '';
+        _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].navigateTo(path);
       } else {
         this.handleHashRoute();
       }
@@ -7867,15 +7911,15 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
   }
   static tnSetup(serverAddress, secureConnection, transport, locale, persistentCache, onSetupCompleted) {
     const tinode = new tinode_sdk__WEBPACK_IMPORTED_MODULE_4__.Tinode({
-      appName: _config_js__WEBPACK_IMPORTED_MODULE_12__.APP_NAME,
+      appName: _config_js__WEBPACK_IMPORTED_MODULE_13__.APP_NAME,
       host: serverAddress,
-      apiKey: _config_js__WEBPACK_IMPORTED_MODULE_12__.API_KEY,
+      apiKey: _config_js__WEBPACK_IMPORTED_MODULE_13__.API_KEY,
       transport: transport,
       secure: secureConnection,
       persist: persistentCache
     }, onSetupCompleted);
     tinode.setHumanLanguage(locale);
-    tinode.enableLogging(_config_js__WEBPACK_IMPORTED_MODULE_12__.LOGGING_ENABLED, true);
+    tinode.enableLogging(_config_js__WEBPACK_IMPORTED_MODULE_13__.LOGGING_ENABLED, true);
     return tinode;
   }
   handlePushMessage(payload) {
@@ -7891,12 +7935,12 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
       this.setState({
         firebaseToken: null
       });
-      _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_17__["default"].updateObject('settings', {
+      _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_18__["default"].updateObject('settings', {
         desktopAlerts: false
       });
     };
     try {
-      this.fcm = (0,firebase_messaging__WEBPACK_IMPORTED_MODULE_3__.getMessaging)((0,firebase_app__WEBPACK_IMPORTED_MODULE_2__.initializeApp)(FIREBASE_INIT, _config_js__WEBPACK_IMPORTED_MODULE_12__.APP_NAME));
+      this.fcm = (0,firebase_messaging__WEBPACK_IMPORTED_MODULE_3__.getMessaging)((0,firebase_app__WEBPACK_IMPORTED_MODULE_2__.initializeApp)(FIREBASE_INIT, _config_js__WEBPACK_IMPORTED_MODULE_13__.APP_NAME));
       return navigator.serviceWorker.getRegistration('/service-worker.js').then(reg => {
         return reg || navigator.serviceWorker.register('/service-worker.js').then(reg => {
           this.checkForAppUpdate(reg);
@@ -7905,15 +7949,15 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
       }).then(reg => {
         (reg.active || reg.installing).postMessage(JSON.stringify({
           locale: locale,
-          version: _version_js__WEBPACK_IMPORTED_MODULE_14__.PACKAGE_VERSION
+          version: _version_js__WEBPACK_IMPORTED_MODULE_15__.PACKAGE_VERSION
         }));
         return TinodeWeb.requestFCMToken(this.fcm, reg);
       }).then(token => {
-        const persist = _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_17__["default"].getObject('keep-logged-in');
+        const persist = _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_18__["default"].getObject('keep-logged-in');
         if (token != this.state.firebaseToken) {
           this.tinode.setDeviceToken(token);
           if (persist) {
-            _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_17__["default"].setObject('firebase-token', token);
+            _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_18__["default"].setObject('firebase-token', token);
           }
         }
         this.setState({
@@ -7921,7 +7965,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
           desktopAlerts: true
         });
         if (persist) {
-          _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_17__["default"].updateObject('settings', {
+          _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_18__["default"].updateObject('settings', {
             desktopAlerts: true
           });
         }
@@ -7966,7 +8010,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
     });
   }
   handleResize() {
-    const mobile = document.documentElement.clientWidth <= _config_js__WEBPACK_IMPORTED_MODULE_12__.MEDIA_BREAKPOINT;
+    const mobile = document.documentElement.clientWidth <= _config_js__WEBPACK_IMPORTED_MODULE_13__.MEDIA_BREAKPOINT;
     this.setState({
       viewportWidth: document.documentElement.clientWidth,
       viewportHeight: document.documentElement.clientHeight
@@ -8003,7 +8047,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
     };
   }
   handleHashRoute() {
-    const hash = _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].parseUrlHash(window.location.hash);
+    const hash = _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].parseUrlHash(window.location.hash);
     const newState = {
       infoPanel: hash.params.info,
       newTopicTabSelected: hash.params.tab
@@ -8107,14 +8151,14 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
   handlePersistenceChange(persist) {
     if (persist) {
       this.tinode.initStorage().then(_ => {
-        _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_17__["default"].setObject('keep-logged-in', true);
+        _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_18__["default"].setObject('keep-logged-in', true);
         this.setState({
           persist: true
         });
       });
     } else {
       this.tinode.clearStorage().then(_ => {
-        _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_17__["default"].setObject('keep-logged-in', false);
+        _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_18__["default"].setObject('keep-logged-in', false);
         this.setState({
           persist: false
         });
@@ -8161,7 +8205,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
         this.tinode.reconnect();
         return;
       }
-      const fmtTime = count > 99 ? (0,_lib_strformat_js__WEBPACK_IMPORTED_MODULE_19__.secondsToTime)(count) : count;
+      const fmtTime = count > 99 ? (0,_lib_strformat_js__WEBPACK_IMPORTED_MODULE_20__.secondsToTime)(count) : count;
       this.handleError(formatMessage(messages.reconnect_countdown, {
         seconds: fmtTime
       }), 'warn', _ => {
@@ -8186,12 +8230,12 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
   }
   doLogin(login, password, tmpToken, cred) {
     if (this.tinode.isAuthenticated()) {
-      _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].navigateTo('');
+      _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].navigateTo('');
       return;
     }
     let token = tmpToken || (this.tinode.getAuthToken() || {}).token;
     if (!(login && password) && !token) {
-      _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].navigateTo('');
+      _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].navigateTo('');
       this.setState({
         loginDisabled: false
       });
@@ -8236,22 +8280,22 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
         if (token) {
           this.handleLogout();
         }
-        _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].navigateTo('');
+        _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].navigateTo('');
       }
     });
   }
   static navigateToCredentialsView(params) {
-    const parsed = _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].parseUrlHash(window.location.hash);
+    const parsed = _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].parseUrlHash(window.location.hash);
     parsed.path[0] = 'cred';
     parsed.params['method'] = params.cred[0];
     parsed.params['token'] = params.token;
     parsed.params['code'] = params.code;
-    _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].composeUrlHash(parsed.path, parsed.params));
+    _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].composeUrlHash(parsed.path, parsed.params));
   }
   handleLoginSuccessful() {
     this.handleError();
-    if (_lib_local_storage_js__WEBPACK_IMPORTED_MODULE_17__["default"].getObject('keep-logged-in')) {
-      _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_17__["default"].setObject('auth-token', this.tinode.getAuthToken());
+    if (_lib_local_storage_js__WEBPACK_IMPORTED_MODULE_18__["default"].getObject('keep-logged-in')) {
+      _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_18__["default"].setObject('auth-token', this.tinode.getAuthToken());
     }
     const goToTopic = this.state.requestedTopic;
     const me = this.tinode.getMeTopic();
@@ -8271,24 +8315,24 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
       this.tinode.disconnect();
       localStorage.removeItem('auth-token');
       this.handleError(err.message, 'err');
-      _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].navigateTo('');
+      _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].navigateTo('');
     }).finally(_ => {
       this.setState({
         loadSpinnerVisible: false
       });
     });
-    let urlHash = _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].setUrlSidePanel(window.location.hash, 'contacts');
+    let urlHash = _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].setUrlSidePanel(window.location.hash, 'contacts');
     if (goToTopic) {
-      urlHash = _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].setUrlTopic(urlHash, goToTopic);
+      urlHash = _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].setUrlTopic(urlHash, goToTopic);
     }
-    _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].navigateTo(urlHash);
+    _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].navigateTo(urlHash);
   }
   tnMeMetaDesc(desc) {
     if (desc) {
       if (desc.public) {
         this.setState({
           sidePanelTitle: desc.public.fn,
-          sidePanelAvatar: (0,_lib_blob_helpers_js__WEBPACK_IMPORTED_MODULE_15__.makeImageUrl)(desc.public.photo)
+          sidePanelAvatar: (0,_lib_blob_helpers_js__WEBPACK_IMPORTED_MODULE_16__.makeImageUrl)(desc.public.photo)
         });
       }
       if (desc.trusted) {
@@ -8438,7 +8482,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
           topicSelectedAcs: this.tinode.getTopicAccessMode(topicName),
           forwardMessage: null
         });
-        _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].setUrlTopic('', topicName));
+        _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].setUrlTopic('', topicName));
       }
     } else {
       this.setState({
@@ -8451,21 +8495,21 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
         infoPanel: undefined,
         forwardMessage: null
       });
-      _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].setUrlTopic('', null));
+      _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].setUrlTopic('', null));
     }
   }
   handleHideMessagesView() {
     this.setState({
       mobilePanel: 'sidepanel'
     });
-    _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].setUrlTopic(window.location.hash, null));
+    _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].setUrlTopic(window.location.hash, null));
   }
   handleSendMessage(msg, uploadCompletionPromise, uploader, head) {
     const topic = this.tinode.getTopic(this.state.topicSelected);
     console.error('topic' + topic);
     console.error('msg' + msg);
     console.error('this.state.topicSelected' + this.state.topicSelected);
-    console.error(head);
+    console.error('head' + head);
     return this.sendMessageToTopic(topic, msg, uploadCompletionPromise, uploader, head);
   }
   sendMessageToTopic(topic, msg, uploadCompletionPromise, uploader, head) {
@@ -8546,7 +8590,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
   }
   handleNewAccount() {
     this.handleError();
-    _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].setUrlSidePanel(window.location.hash, 'register'));
+    _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].setUrlSidePanel(window.location.hash, 'register'));
   }
   handleNewAccountRequest(login_, password_, public_, cred_, tags_) {
     this.handleError();
@@ -8595,7 +8639,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
   }
   handleSettings() {
     this.handleError();
-    _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].setUrlSidePanel(window.location.hash, this.state.myUserId ? 'edit' : 'settings'));
+    _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].setUrlSidePanel(window.location.hash, this.state.myUserId ? 'edit' : 'settings'));
   }
   handleGlobalSettings(settings) {
     const serverAddress = settings.serverAddress || this.state.serverAddress;
@@ -8606,7 +8650,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
       this.tinode.onDisconnect = undefined;
       this.tinode.disconnect();
     }
-    this.tinode = TinodeWeb.tnSetup(serverAddress, secureConnection, transport, this.props.intl.locale, _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_17__["default"].getObject('keep-logged-in'));
+    this.tinode = TinodeWeb.tnSetup(serverAddress, secureConnection, transport, this.props.intl.locale, _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_18__["default"].getObject('keep-logged-in'));
     this.tinode.onConnect = this.handleConnected;
     this.tinode.onDisconnect = this.handleDisconnect;
     this.tinode.onAutoreconnectIteration = this.handleAutoreconnectIteration;
@@ -8617,18 +8661,18 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
       transport: transport,
       secureConnection: secureConnection
     });
-    _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_17__["default"].setObject('settings', {
+    _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_18__["default"].setObject('settings', {
       serverAddress: serverAddress,
       transport: transport,
       secureConnection: secureConnection
     });
-    _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].setUrlSidePanel(window.location.hash, ''));
+    _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].setUrlSidePanel(window.location.hash, ''));
   }
   handleShowArchive() {
-    _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].setUrlSidePanel(window.location.hash, this.state.myUserId ? 'archive' : ''));
+    _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].setUrlSidePanel(window.location.hash, this.state.myUserId ? 'archive' : ''));
   }
   handleShowBlocked() {
-    _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].setUrlSidePanel(window.location.hash, this.state.myUserId ? 'blocked' : ''));
+    _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].setUrlSidePanel(window.location.hash, this.state.myUserId ? 'blocked' : ''));
   }
   toggleFCMToken(enabled) {
     if (enabled) {
@@ -8641,8 +8685,8 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
         this.setState({
           desktopAlerts: true
         });
-        if (_lib_local_storage_js__WEBPACK_IMPORTED_MODULE_17__["default"].getObject('keep-logged-in')) {
-          _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_17__["default"].updateObject('settings', {
+        if (_lib_local_storage_js__WEBPACK_IMPORTED_MODULE_18__["default"].getObject('keep-logged-in')) {
+          _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_18__["default"].updateObject('settings', {
             desktopAlerts: true
           });
         }
@@ -8651,7 +8695,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
       (0,firebase_messaging__WEBPACK_IMPORTED_MODULE_3__.deleteToken)(this.fcm).catch(err => {
         console.error("Unable to delete token.", err);
       }).finally(_ => {
-        _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_17__["default"].updateObject('settings', {
+        _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_18__["default"].updateObject('settings', {
           desktopAlerts: false
         });
         localStorage.removeItem('firebase-token');
@@ -8666,7 +8710,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
         desktopAlerts: false,
         firebaseToken: null
       });
-      _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_17__["default"].updateObject('settings', {
+      _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_18__["default"].updateObject('settings', {
         desktopAlerts: false
       });
     }
@@ -8675,7 +8719,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
     this.setState({
       messageSounds: enabled
     });
-    _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_17__["default"].updateObject('settings', {
+    _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_18__["default"].updateObject('settings', {
       messageSoundsOff: !enabled
     });
   }
@@ -8699,7 +8743,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
     });
   }
   handleSidepanelCancel() {
-    const parsed = _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].parseUrlHash(window.location.hash);
+    const parsed = _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].parseUrlHash(window.location.hash);
     let path = '';
     if (['security', 'support', 'general', 'notif'].includes(parsed.path[0])) {
       path = 'edit';
@@ -8718,17 +8762,17 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
       delete parsed.params.scheme;
       delete parsed.params.token;
     }
-    _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].composeUrlHash(parsed.path, parsed.params));
+    _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].composeUrlHash(parsed.path, parsed.params));
     this.setState({
       errorText: '',
       errorLevel: null
     });
   }
   basicNavigator(hash) {
-    _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].setUrlSidePanel(window.location.hash, hash));
+    _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].setUrlSidePanel(window.location.hash, hash));
   }
   infoNavigator(hash) {
-    _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].setUrlInfoPanel(window.location.hash, hash));
+    _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].setUrlInfoPanel(window.location.hash, hash));
   }
   handleStartTopicRequest(topicName, newTopicParams, isChannel) {
     if (topicName && this.tinode.isTopicCached(topicName)) {
@@ -8738,11 +8782,11 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
     const params = {};
     if (tinode_sdk__WEBPACK_IMPORTED_MODULE_4__.Tinode.isP2PTopicName(topicName)) {
       params.sub = {
-        mode: _config_js__WEBPACK_IMPORTED_MODULE_12__.DEFAULT_P2P_ACCESS_MODE
+        mode: _config_js__WEBPACK_IMPORTED_MODULE_13__.DEFAULT_P2P_ACCESS_MODE
       };
       params.desc = {
         defacs: {
-          auth: _config_js__WEBPACK_IMPORTED_MODULE_12__.DEFAULT_P2P_ACCESS_MODE
+          auth: _config_js__WEBPACK_IMPORTED_MODULE_13__.DEFAULT_P2P_ACCESS_MODE
         }
       };
     } else {
@@ -8768,7 +8812,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
     let nextState = {};
     if (this.state.callShouldStart) {
       nextState = {
-        callState: _constants_js__WEBPACK_IMPORTED_MODULE_13__.CALL_STATE_IN_PROGRESS,
+        callState: _constants_js__WEBPACK_IMPORTED_MODULE_14__.CALL_STATE_IN_PROGRESS,
         callShouldStart: false
       };
     }
@@ -8776,7 +8820,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
       nextState.topicSelected = newName;
     }
     this.setState(nextState, _ => {
-      _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].setUrlTopic('', newName));
+      _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].setUrlTopic('', newName));
     });
   }
   handleTopicUpdateRequest(topicName, pub, priv, defacs) {
@@ -8849,7 +8893,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
     }
   }
   handleLogout() {
-    (0,_lib_utils_js__WEBPACK_IMPORTED_MODULE_20__.updateFavicon)(0);
+    (0,_lib_utils_js__WEBPACK_IMPORTED_MODULE_21__.updateFavicon)(0);
     localStorage.removeItem('auth-token');
     localStorage.removeItem('firebase-token');
     localStorage.removeItem('settings');
@@ -8867,13 +8911,13 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
     }
     this.setState(this.getBlankState());
     cleared.then(_ => {
-      this.tinode = TinodeWeb.tnSetup(this.state.serverAddress, (0,_lib_host_name_js__WEBPACK_IMPORTED_MODULE_16__.isSecureConnection)(), this.state.transport, this.props.intl.locale, _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_17__["default"].getObject('keep-logged-in'), _ => {
+      this.tinode = TinodeWeb.tnSetup(this.state.serverAddress, (0,_lib_host_name_js__WEBPACK_IMPORTED_MODULE_17__.isSecureConnection)(), this.state.transport, this.props.intl.locale, _lib_local_storage_js__WEBPACK_IMPORTED_MODULE_18__["default"].getObject('keep-logged-in'), _ => {
         this.tinode.onConnect = this.handleConnected;
         this.tinode.onDisconnect = this.handleDisconnect;
         this.tinode.onAutoreconnectIteration = this.handleAutoreconnectIteration;
         this.tinode.onInfoMessage = this.handleInfoMessage;
         this.tinode.onDataMessage = this.handleDataMessage;
-        _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].navigateTo('');
+        _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].navigateTo('');
       });
     });
   }
@@ -8888,7 +8932,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
       return;
     }
     topic.delTopic(true).then(_ => {
-      _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].setUrlTopic(window.location.hash, ''));
+      _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].setUrlTopic(window.location.hash, ''));
     }).catch(err => {
       this.handleError(err.message, 'err');
     });
@@ -8906,7 +8950,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
       return;
     }
     topic.leave(true).then(_ => {
-      _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].setUrlTopic(window.location.hash, ''));
+      _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].setUrlTopic(window.location.hash, ''));
     }).catch(err => {
       this.handleError(err.message, 'err');
     });
@@ -8917,7 +8961,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
       return;
     }
     topic.updateMode(null, '-JP').then(_ => {
-      _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].setUrlTopic(window.location.hash, ''));
+      _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].setUrlTopic(window.location.hash, ''));
     }).catch(err => this.handleError(err.message, 'err'));
   }
   handleReportTopic(topicName) {
@@ -8927,7 +8971,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
     }
     this.tinode.report('report', topicName);
     topic.updateMode(null, '-JP').then(_ => {
-      _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].setUrlTopic(window.location.hash, ''));
+      _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].setUrlTopic(window.location.hash, ''));
     }).catch(err => this.handleError(err.message, 'err'));
   }
   handleShowContextMenu(params, menuItems) {
@@ -8948,7 +8992,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
     }
     const header = '➦ ' + params.userName;
     const content = typeof params.content == 'string' ? tinode_sdk__WEBPACK_IMPORTED_MODULE_4__.Drafty.init(params.content) : tinode_sdk__WEBPACK_IMPORTED_MODULE_4__.Drafty.forwardedContent(params.content);
-    const preview = tinode_sdk__WEBPACK_IMPORTED_MODULE_4__.Drafty.preview(content, _config_js__WEBPACK_IMPORTED_MODULE_12__.FORWARDED_PREVIEW_LENGTH, true);
+    const preview = tinode_sdk__WEBPACK_IMPORTED_MODULE_4__.Drafty.preview(content, _config_js__WEBPACK_IMPORTED_MODULE_13__.FORWARDED_PREVIEW_LENGTH, true);
     const msg = tinode_sdk__WEBPACK_IMPORTED_MODULE_4__.Drafty.append(tinode_sdk__WEBPACK_IMPORTED_MODULE_4__.Drafty.appendLineBreak(tinode_sdk__WEBPACK_IMPORTED_MODULE_4__.Drafty.mention(header, params.userFrom)), content);
     const msgPreview = tinode_sdk__WEBPACK_IMPORTED_MODULE_4__.Drafty.quote(header, params.userFrom, preview);
     const head = {
@@ -9037,7 +9081,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
     });
   }
   handleShowInfoView() {
-    _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].addUrlParam(window.location.hash, 'info', 'info'));
+    _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].addUrlParam(window.location.hash, 'info', 'info'));
     this.setState({
       infoPanel: 'info'
     });
@@ -9068,7 +9112,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
           meth: cred,
           resp: code
         }
-      }).then(_ => _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].setUrlSidePanel(window.location.hash, 'contacts'))).catch(err => this.handleError(err.message, 'err'));
+      }).then(_ => _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].navigateTo(_lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].setUrlSidePanel(window.location.hash, 'contacts'))).catch(err => this.handleError(err.message, 'err'));
     } else {
       this.setState({
         credMethod: cred,
@@ -9087,7 +9131,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
     });
   }
   handleResetPassword(newPassword, tempAuth) {
-    const secret = (0,_lib_blob_helpers_js__WEBPACK_IMPORTED_MODULE_15__.base64ReEncode)(tempAuth.secret);
+    const secret = (0,_lib_blob_helpers_js__WEBPACK_IMPORTED_MODULE_16__.base64ReEncode)(tempAuth.secret);
     if (!secret || !tempAuth.scheme) {
       this.handleError(this.props.intl.formatMessage(messages.invalid_security_token), 'err');
     } else {
@@ -9096,7 +9140,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
         secret: secret
       })).then(_ => {
         this.handleError(this.props.intl.formatMessage(messages.password_reset_success), 'info');
-        _lib_navigation_js__WEBPACK_IMPORTED_MODULE_18__["default"].navigateTo('');
+        _lib_navigation_js__WEBPACK_IMPORTED_MODULE_19__["default"].navigateTo('');
       }).catch(err => {
         this.handleError(err.message, 'err');
       });
@@ -9124,22 +9168,22 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
   handleStartVideoCall() {
     this.setState({
       callTopic: this.state.topicSelected,
-      callState: _constants_js__WEBPACK_IMPORTED_MODULE_13__.CALL_STATE_OUTGOING_INITATED,
+      callState: _constants_js__WEBPACK_IMPORTED_MODULE_14__.CALL_STATE_OUTGOING_INITATED,
       callAudioOnly: false
     });
   }
   handleStartAudioCall() {
     this.setState({
       callTopic: this.state.topicSelected,
-      callState: _constants_js__WEBPACK_IMPORTED_MODULE_13__.CALL_STATE_OUTGOING_INITATED,
+      callState: _constants_js__WEBPACK_IMPORTED_MODULE_14__.CALL_STATE_OUTGOING_INITATED,
       callAudioOnly: true
     });
   }
   handleCallInvite(callTopic, callSeq, callState, audioOnly) {
     switch (callState) {
-      case _constants_js__WEBPACK_IMPORTED_MODULE_13__.CALL_STATE_OUTGOING_INITATED:
+      case _constants_js__WEBPACK_IMPORTED_MODULE_14__.CALL_STATE_OUTGOING_INITATED:
         const head = {
-          webrtc: _constants_js__WEBPACK_IMPORTED_MODULE_13__.CALL_HEAD_STARTED,
+          webrtc: _constants_js__WEBPACK_IMPORTED_MODULE_14__.CALL_HEAD_STARTED,
           aonly: !!audioOnly
         };
         this.handleSendMessage(tinode_sdk__WEBPACK_IMPORTED_MODULE_4__.Drafty.videoCall(audioOnly), undefined, undefined, head).then(ctrl => {
@@ -9152,7 +9196,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
           });
         });
         break;
-      case _constants_js__WEBPACK_IMPORTED_MODULE_13__.CALL_STATE_IN_PROGRESS:
+      case _constants_js__WEBPACK_IMPORTED_MODULE_14__.CALL_STATE_IN_PROGRESS:
         const topic = this.tinode.getTopic(callTopic);
         if (!topic) {
           return;
@@ -9202,7 +9246,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
     }
     this.setState({
       callTopic: undefined,
-      callState: _constants_js__WEBPACK_IMPORTED_MODULE_13__.CALL_STATE_NONE,
+      callState: _constants_js__WEBPACK_IMPORTED_MODULE_14__.CALL_STATE_NONE,
       callAudioOnly: undefined
     });
   }
@@ -9214,7 +9258,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
     if (topic.isSubscribed()) {
       this.handleTopicSelected(this.state.callTopic);
       this.setState({
-        callState: _constants_js__WEBPACK_IMPORTED_MODULE_13__.CALL_STATE_IN_PROGRESS
+        callState: _constants_js__WEBPACK_IMPORTED_MODULE_14__.CALL_STATE_IN_PROGRESS
       });
     } else {
       this.setState({
@@ -9231,7 +9275,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
         if (tinode_sdk__WEBPACK_IMPORTED_MODULE_4__.Tinode.isMeTopicName(info.topic) && this.tinode.isMe(info.from)) {
           this.setState({
             callTopic: null,
-            callState: _constants_js__WEBPACK_IMPORTED_MODULE_13__.CALL_STATE_NONE,
+            callState: _constants_js__WEBPACK_IMPORTED_MODULE_14__.CALL_STATE_NONE,
             callSeq: null,
             callAudioOnly: undefined
           });
@@ -9239,7 +9283,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
         }
         if (info.topic == this.state.callTopic) {
           this.setState({
-            callState: _constants_js__WEBPACK_IMPORTED_MODULE_13__.CALL_STATE_IN_PROGRESS
+            callState: _constants_js__WEBPACK_IMPORTED_MODULE_14__.CALL_STATE_IN_PROGRESS
           });
         }
         break;
@@ -9249,16 +9293,16 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
     }
   }
   handleDataMessage(data) {
-    if (data.head && data.head.webrtc && data.head.webrtc == _constants_js__WEBPACK_IMPORTED_MODULE_13__.CALL_HEAD_STARTED) {
+    if (data.head && data.head.webrtc && data.head.webrtc == _constants_js__WEBPACK_IMPORTED_MODULE_14__.CALL_HEAD_STARTED) {
       const topic = this.tinode.getTopic(data.topic);
       if (topic) {
         const msg = topic.latestMsgVersion(data.seq) || data;
-        if (msg.head && msg.head.webrtc && msg.head.webrtc == _constants_js__WEBPACK_IMPORTED_MODULE_13__.CALL_HEAD_STARTED) {
+        if (msg.head && msg.head.webrtc && msg.head.webrtc == _constants_js__WEBPACK_IMPORTED_MODULE_14__.CALL_HEAD_STARTED) {
           if (data.from != this.state.myUserId) {
-            if (this.state.callState == _constants_js__WEBPACK_IMPORTED_MODULE_13__.CALL_STATE_NONE) {
+            if (this.state.callState == _constants_js__WEBPACK_IMPORTED_MODULE_14__.CALL_STATE_NONE) {
               this.setState({
                 callTopic: data.topic,
-                callState: _constants_js__WEBPACK_IMPORTED_MODULE_13__.CALL_STATE_INCOMING_RECEIVED,
+                callState: _constants_js__WEBPACK_IMPORTED_MODULE_14__.CALL_STATE_INCOMING_RECEIVED,
                 callSeq: data.seq,
                 callAudioOnly: !!msg.head.aonly
               });
@@ -9301,7 +9345,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
       searchResults: this.state.searchResults,
       onSearchContacts: this.handleSearchContacts,
       onTopicSelected: this.handleStartTopicRequest
-    }) : null, this.state.callTopic && this.state.callState == _constants_js__WEBPACK_IMPORTED_MODULE_13__.CALL_STATE_INCOMING_RECEIVED ? react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_widgets_call_incoming_jsx__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    }) : null, this.state.callTopic && this.state.callState == _constants_js__WEBPACK_IMPORTED_MODULE_14__.CALL_STATE_INCOMING_RECEIVED ? react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_widgets_call_incoming_jsx__WEBPACK_IMPORTED_MODULE_8__["default"], {
       tinode: this.tinode,
       topic: this.state.callTopic,
       seq: this.state.callSeq,
@@ -9456,6 +9500,46 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
       onInitFind: this.tnInitFind,
       onError: this.handleError,
       showContextMenu: this.handleShowContextMenu
+    }) : null, this.state.testVisible ? react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_test_view_jsx__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      tinode: this.tinode,
+      connected: this.state.connected,
+      ready: this.state.ready,
+      online: this.state.topicSelectedOnline,
+      acs: this.state.topicSelectedAcs,
+      displayMobile: this.state.displayMobile,
+      viewportWidth: this.state.viewportWidth,
+      viewportHeight: this.state.viewportHeight,
+      topic: this.state.topicSelected,
+      myUserId: this.state.myUserId,
+      myUserName: this.state.sidePanelTitle,
+      serverVersion: this.state.serverVersion,
+      serverAddress: this.state.serverAddress,
+      applicationVisible: this.state.applicationVisible,
+      forwardMessage: this.state.forwardMessage,
+      onCancelForwardMessage: this.handleHideForwardDialog,
+      callTopic: this.state.callTopic,
+      callSeq: this.state.callSeq,
+      callState: this.state.callState,
+      callAudioOnly: this.state.callAudioOnly,
+      onCallHangup: this.handleCallHangup,
+      onCallInvite: this.handleCallInvite,
+      onCallSendOffer: this.handleCallSendOffer,
+      onCallIceCandidate: this.handleCallIceCandidate,
+      onCallSendAnswer: this.handleCallSendAnswer,
+      errorText: this.state.errorText,
+      errorLevel: this.state.errorLevel,
+      errorAction: this.state.errorAction,
+      errorActionText: this.state.errorActionText,
+      newTopicParams: this.state.newTopicParams,
+      handleTopicSelected: this.handleTopicSelected,
+      onHideMessagesView: this.handleHideMessagesView,
+      onError: this.handleError,
+      onNewTopicCreated: this.handleNewTopicCreated,
+      showContextMenu: this.handleShowContextMenu,
+      onChangePermissions: this.handleChangePermissions,
+      onNewChat: this.handleNewChatInvitation,
+      sendMessage: this.handleSendMessage,
+      onVideoCallClosed: this.handleCallClose
     }) : null);
   }
 }

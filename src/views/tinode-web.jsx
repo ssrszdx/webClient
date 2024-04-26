@@ -17,6 +17,7 @@ const PhoneCountrySelector = React.lazy(_ => import('../widgets/phone-country-se
 import InfoView from './info-view.jsx';
 import MessagesView from './messages-view.jsx';
 import SidepanelView from './sidepanel-view.jsx';
+import TestView from './test-view.jsx';
 
 import { API_KEY, APP_NAME, DEFAULT_P2P_ACCESS_MODE, FORWARDED_PREVIEW_LENGTH, LOGGING_ENABLED,
   MEDIA_BREAKPOINT } from '../config.js';
@@ -262,6 +263,7 @@ class TinodeWeb extends React.Component {
 
       // Modal alert dialog.
       alertVisible: false,
+      testVisible:true, // by ssrs
       alertParams: {},
 
       // Chats as shown in the ContactsView
@@ -1058,7 +1060,7 @@ class TinodeWeb extends React.Component {
     console.error('topic'+topic)
     console.error('msg'+msg)
     console.error('this.state.topicSelected'+this.state.topicSelected)
-    console.error(head)
+    console.error('head'+head)
     /* TODO: check if return is required */
     return this.sendMessageToTopic(topic, msg, uploadCompletionPromise, uploader, head);
   }
@@ -2163,6 +2165,55 @@ class TinodeWeb extends React.Component {
           :
           null
         }
+
+        {this.state.testVisible ?
+          <TestView
+              tinode={this.tinode}
+              connected={this.state.connected}
+              ready={this.state.ready}
+              online={this.state.topicSelectedOnline}
+              acs={this.state.topicSelectedAcs}
+              displayMobile={this.state.displayMobile}
+              viewportWidth={this.state.viewportWidth}
+              viewportHeight={this.state.viewportHeight}
+              topic={this.state.topicSelected}
+              myUserId={this.state.myUserId}
+              // User public.fn.
+              myUserName={this.state.sidePanelTitle}
+              serverVersion={this.state.serverVersion}
+              serverAddress={this.state.serverAddress}
+              applicationVisible={this.state.applicationVisible}
+
+              forwardMessage={this.state.forwardMessage}
+              onCancelForwardMessage={this.handleHideForwardDialog}
+
+              callTopic={this.state.callTopic}
+              callSeq={this.state.callSeq}
+              callState={this.state.callState}
+              callAudioOnly={this.state.callAudioOnly}
+              onCallHangup={this.handleCallHangup}
+
+              onCallInvite={this.handleCallInvite}
+              onCallSendOffer={this.handleCallSendOffer}
+              onCallIceCandidate={this.handleCallIceCandidate}
+              onCallSendAnswer={this.handleCallSendAnswer}
+
+              errorText={this.state.errorText}
+              errorLevel={this.state.errorLevel}
+              errorAction={this.state.errorAction}
+              errorActionText={this.state.errorActionText}
+
+              newTopicParams={this.state.newTopicParams}
+              handleTopicSelected={this.handleTopicSelected}
+              onHideMessagesView={this.handleHideMessagesView}
+              onError={this.handleError}
+              onNewTopicCreated={this.handleNewTopicCreated}
+              showContextMenu={this.handleShowContextMenu}
+              onChangePermissions={this.handleChangePermissions}
+              onNewChat={this.handleNewChatInvitation}
+              sendMessage={this.handleSendMessage}
+              onVideoCallClosed={this.handleCallClose}
+            /> : null}
       </div>
     );
   }

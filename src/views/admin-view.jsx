@@ -2,7 +2,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import HashNavigation from '../lib/navigation.js';
-import SendMessage from '../widgets/send-message.jsx';
+import TestView from './test-view.jsx';
 
 export default class AdminSettingsView extends React.PureComponent {
   constructor(props) {
@@ -24,6 +24,11 @@ export default class AdminSettingsView extends React.PureComponent {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handlePartsSelect = this.handlePartsSelect.bind(this);
     this.handleClick=this.handleClick.bind(this);
+  }
+
+  componentDidMount() {
+    //this.props.handSend("111");
+
   }
 
 
@@ -76,11 +81,7 @@ export default class AdminSettingsView extends React.PureComponent {
 
   handleClick(e){
     e.preventDefault();
-    //HashNavigation.navigateTo("#");
-
-
-    
-
+    HashNavigation.navigateTo("#register");    
   }
 
 
@@ -166,6 +167,9 @@ export default class AdminSettingsView extends React.PureComponent {
               description="Button [button_create_test]" />
           </button>
         </div>
+
+        <TestView></TestView>
+
       </form>
     );
   }
