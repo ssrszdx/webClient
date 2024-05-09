@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { FormattedMessage } from 'react-intl';
 
-const TestDropdownList = () => {
+const TestDropdownList = ({onData}) => {
     let submitClasses = 'primary';
 
     const [selectedOption, setSelectedOption] = useState('');
     const [options, setOptions] = useState([]);
 
-
+    console.log('selectedOption:', selectedOption);
     useEffect(() => {
         // 在组件挂载时获取下拉框的选项数据
         fetchOptions();
-    }, []);
+        onData(selectedOption);
+    }, [selectedOption,onData]);
 
     const fetchOptions = async () => {
         try {
@@ -31,6 +32,7 @@ const TestDropdownList = () => {
 
     const handleSelect = (event) => {
         setSelectedOption(event.target.value);
+        onData(event.target.value);
     };
    
 

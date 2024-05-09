@@ -4058,8 +4058,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-intl */ "react-intl");
 /* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _lib_navigation_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../lib/navigation.js */ "./src/lib/navigation.js");
-/* harmony import */ var _test_view_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./test-view.jsx */ "./src/views/test-view.jsx");
-
 
 
 
@@ -4106,21 +4104,22 @@ class AdminSettingsView extends (react__WEBPACK_IMPORTED_MODULE_0___default().Pu
   handleSubmit(e) {
     e.preventDefault();
     const data = new FormData(e.target);
-    const parts = this.state.selectedOption.split(',');
-    const formData = {};
-    for (let key of data.keys()) {
-      formData[key] = data.get(key);
-    }
-    formData.parts = parts;
+    const parts = this.state.selectedOption;
+    const formData = {
+      name: data.get('name'),
+      parts: parts,
+      timestr: data.get('part1_read_time') + ',' + data.get('part1_do_time') + ',' + data.get('part2_read_time') + ',' + data.get('part2_do_time') + ',' + data.get('part3_read_time') + ',' + data.get('part3_do_time')
+    };
     fetch('http://localhost:6060/api/createtest', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/x-www-form-urlencoded'
       },
-      body: JSON.stringify(formData)
+      body: new URLSearchParams(formData).toString()
     }).then(response => response.json()).then(data => {
-      if (data.success) {
+      if (data.code == '1000') {
         console.log('Data added successfully');
+        _lib_navigation_js__WEBPACK_IMPORTED_MODULE_2__["default"].navigateTo('');
       } else {
         console.error('An error occurred while adding data');
       }
@@ -4159,7 +4158,7 @@ class AdminSettingsView extends (react__WEBPACK_IMPORTED_MODULE_0___default().Pu
         width: '200px'
       },
       id: "testName",
-      name: "testName"
+      name: "name"
     })), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "panel-form-row"
     }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
@@ -4182,16 +4181,6 @@ class AdminSettingsView extends (react__WEBPACK_IMPORTED_MODULE_0___default().Pu
       key: option.id,
       value: option.value
     }, option.label)))), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-      className: "panel-form-row"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
-      className: "small"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
-      id: "label_test_time",
-      defaultMessage: [{
-        "type": 0,
-        "value": "label_test_time"
-      }]
-    }))), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "panel-form-row"
     }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
       className: "small"
@@ -4297,15 +4286,14 @@ class AdminSettingsView extends (react__WEBPACK_IMPORTED_MODULE_0___default().Pu
       className: "dialog-buttons"
     }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
       type: "submit",
-      className: "primary",
-      onClick: this.handleClick
+      className: "primary"
     }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
       id: "button_create_test",
       defaultMessage: [{
         "type": 0,
         "value": "button_create_test"
       }]
-    }))), react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_test_view_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+    }))));
   }
 }
 ;
@@ -5211,7 +5199,8 @@ class LoginView extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
       password: '',
       hostName: props.serverAddress,
       saveToken: props.persist,
-      groupOption: ''
+      groupOption: '',
+      testid: ''
     };
     this.handleLoginChange = this.handleLoginChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
@@ -5219,6 +5208,7 @@ class LoginView extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleAdminSetting = this.handleAdminSetting.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleData = this.handleData.bind(this);
   }
   handleLoginChange(e) {
     this.setState({
@@ -5243,12 +5233,18 @@ class LoginView extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
   handleAdminSetting(e) {
     e.preventDefault();
   }
+  handleData = data => {
+    console.log(data);
+    this.setState({
+      testid: data
+    });
+  };
   handleClick = async e => {
     try {
       e.preventDefault();
       const params = new URLSearchParams({
-        clientid: '1',
-        testid: '2'
+        clientid: 'demo1',
+        testid: this.state.testid
       });
       const url = `http://localhost:6060/api/getgroupinfo?${params}`;
       const response = await fetch(url);
@@ -5256,12 +5252,13 @@ class LoginView extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
       const processdata = data.data.map(item => ({
         groupid: item.Groupid,
         userid: item.Userid,
+        groupname: item.Groupname,
         username: item.Username
       }));
       this.setState({
-        groupOption: processdata[0].groupid,
-        login: 'alice',
-        password: 'alice123'
+        groupOption: processdata[0].groupname,
+        login: processdata[0].username,
+        password: processdata[0].username + '123'
       });
     } catch (error) {
       console.error('Error fetching options:', error);
@@ -5276,7 +5273,8 @@ class LoginView extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
       id: "login-form",
       onSubmit: this.handleSubmit
     }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_widgets_test_dplist_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      id: "test-dplist"
+      id: "test-dplist",
+      onData: this.handleData
     })), react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__.FormattedMessage, {
       id: "group_prompt",
       defaultMessage: [{
@@ -7183,11 +7181,7 @@ class SettingsView extends (react__WEBPACK_IMPORTED_MODULE_0___default().PureCom
         htmlFor: id
       }, name)));
     });
-    return react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
-      id: "settings-form",
-      className: "panel-form",
-      onSubmit: this.handleSubmit
-    }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_admin_view_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], null));
+    return react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_admin_view_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], null);
   }
 }
 ;
@@ -7530,10 +7524,22 @@ class TestView extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) 
     super(props);
     this.state = {};
     this.handleClick = this.handleClick.bind(this);
+    this.handleSubmitClick = this.handleSubmitClick.bind(this);
+    this.handleMsg = this.handleMsg.bind(this);
   }
   handleClick = () => {
     this.props.handleTopicSelected("grp0J5IIvmaIs0");
     this.props.sendMessage("123456789");
+  };
+  handleSubmitClick = () => {
+    const topic = this.props.tinode.getTopic("grp0J5IIvmaIs0");
+    if (topic) {
+      topic.onData = this.handleMsg;
+      topic.onInfo = this.handleMsg;
+    }
+  };
+  handleMsg = data => {
+    console.log(data);
   };
   render() {
     return react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -7542,7 +7548,11 @@ class TestView extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) 
       type: "submit",
       className: "primary",
       onClick: this.handleClick
-    }, "test button"));
+    }, "test button"), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      type: "submit",
+      className: "primary",
+      onClick: this.handleSubmitClick
+    }, "accept button"));
   }
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TestView);
@@ -9532,6 +9542,7 @@ class TinodeWeb extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component)
       errorActionText: this.state.errorActionText,
       newTopicParams: this.state.newTopicParams,
       handleTopicSelected: this.handleTopicSelected,
+      handlePushMessage: this.handlePushMessage,
       onHideMessagesView: this.handleHideMessagesView,
       onError: this.handleError,
       onNewTopicCreated: this.handleNewTopicCreated,
@@ -16045,13 +16056,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_1__);
 
 
-const TestDropdownList = () => {
+const TestDropdownList = _ref => {
+  let {
+    onData
+  } = _ref;
   let submitClasses = 'primary';
   const [selectedOption, setSelectedOption] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
   const [options, setOptions] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  console.log('selectedOption:', selectedOption);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     fetchOptions();
-  }, []);
+    onData(selectedOption);
+  }, [selectedOption, onData]);
   const fetchOptions = async () => {
     try {
       const response = await fetch('http://localhost:6060/api/gettestlist');
@@ -16069,6 +16085,7 @@ const TestDropdownList = () => {
   };
   const handleSelect = event => {
     setSelectedOption(event.target.value);
+    onData(event.target.value);
   };
   return react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     style: {

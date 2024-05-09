@@ -1751,6 +1751,6 @@
     "defaultMessage": "label_test_time",
     "description": "label_test_time",
     "missing": true,
-    "obsolete": false
+    "obsolete": true
   }
 }

@@ -2,7 +2,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import HashNavigation from '../lib/navigation.js';
-import TestView from './test-view.jsx';
+//import TestView from './test-view.jsx';
 
 export default class AdminSettingsView extends React.PureComponent {
   constructor(props) {
@@ -28,48 +28,50 @@ export default class AdminSettingsView extends React.PureComponent {
 
   componentDidMount() {
     //this.props.handSend("111");
+   // console.log("111111") 
 
   }
 
 
   handleSubmit(e) {
     e.preventDefault();
+
     const data = new FormData(e.target);
-    const parts = this.state.selectedOption.split(',');
+    const parts = this.state.selectedOption;
   
-    const formData = {};
-  for (let key of data.keys()) {
-    formData[key] = data.get(key);
-  }
-  
-  
+    const formData = {
+      name:  data.get('name'),
+      parts: parts,
+      timestr:  data.get('part1_read_time') + ',' + data.get('part1_do_time') + ',' + data.get('part2_read_time') + ',' + data.get('part2_do_time') + ',' + data.get('part3_read_time') + ',' + data.get('part3_do_time')
+    };
 
-
-  // Add parts to formData
-  formData.parts = parts;
-
-  // Send a POST request
-  fetch('http://localhost:6060/api/createtest', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(formData)
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data.success) {
-      // Handle success
-      console.log('Data added successfully');
-    } else {
-      // Handle error
-      console.error('An error occurred while adding data');
-    }
-  })
-  .catch(error => {
-    // Handle network error
-    console.error('A network error occurred while adding data');
-  });
+    //formData.timestr = data.get('part1_read_time') + ',' + data.get('part1_do_time') + ',' + data.get('part2_read_time') + ',' + data.get('part2_do_time') + ',' + data.get('part3_read_time') + ',' + data.get('part3_do_time');
+    
+   // formData.timestr="1,2,3,4,5,6";
+    // Send a POST request
+    fetch('http://localhost:6060/api/createtest', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: new URLSearchParams(formData).toString()
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.code=='1000') {
+        // Handle success
+        console.log('Data added successfully');
+        HashNavigation.navigateTo('');
+        //HashNavigation.navigateTo(HashNavigation.setUrlSidePanel(window.location.hash, 'login'))
+      } else {
+        // Handle error
+        console.error('An error occurred while adding data');
+      }
+    })
+    .catch(error => {
+      // Handle network error
+      console.error('A network error occurred while adding data');
+    });
         
   }
 
@@ -95,7 +97,7 @@ export default class AdminSettingsView extends React.PureComponent {
             <FormattedMessage id="label_test_name" defaultMessage="label_test_name"
               description="label_test_name" />
           </label>
-          <input  type="text" style={{ width: '200px' }} id="testName" name="testName"></input>
+          <input  type="text" style={{ width: '200px' }} id="testName" name="name"></input>
         </div>
         <div className="panel-form-row">
           <label className="small">
@@ -111,12 +113,7 @@ export default class AdminSettingsView extends React.PureComponent {
             ))}
           </select>
         </div>
-        <div className="panel-form-row">        
-          <label className="small">
-            <FormattedMessage id="label_test_time" defaultMessage="label_test_time"
-              description="label_test_time" />
-          </label>
-        </div>
+
         <div className="panel-form-row">
           <label className="small">
             <FormattedMessage id="part1_read_time" defaultMessage="part1_read_time"
@@ -162,15 +159,22 @@ export default class AdminSettingsView extends React.PureComponent {
         </div>
 
         <div className="dialog-buttons">
-          <button type="submit" className="primary" onClick={this.handleClick}>
-            <FormattedMessage id="button_create_test" defaultMessage="button_create_test"
+          <button type="submit" className="primary" >
+            <FormattedMessage id="button_create_test" defaultMessage="button_create_test" 
               description="Button [button_create_test]" />
           </button>
         </div>
-
-        <TestView></TestView>
 
       </form>
     );
   }
 };
+
+/*
+        <div className="panel-form-row">        
+          <label className="small">
+            <FormattedMessage id="label_test_time" defaultMessage="label_test_time"
+              description="label_test_time" />
+          </label>
+        </div> 
+*/

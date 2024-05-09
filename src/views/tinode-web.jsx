@@ -2205,6 +2205,7 @@ class TinodeWeb extends React.Component {
 
               newTopicParams={this.state.newTopicParams}
               handleTopicSelected={this.handleTopicSelected}
+              handlePushMessage={this.handlePushMessage}
               onHideMessagesView={this.handleHideMessagesView}
               onError={this.handleError}
               onNewTopicCreated={this.handleNewTopicCreated}

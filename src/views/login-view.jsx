@@ -17,6 +17,10 @@ import TestDropdownList from '../widgets/test-dplist.jsx';
             <FormattedMessage id="forgot_password_link" defaultMessage="Forgot password?"
               description="Link to Reset password form" />
           </a>
+          <a href="#reset">
+            <FormattedMessage id="forgot_password_link" defaultMessage="Forgot password?"
+              description="Link to Reset password form" />
+          </a>
         </div>*/
 export default class LoginView extends React.Component {
   constructor(props) {
@@ -27,7 +31,8 @@ export default class LoginView extends React.Component {
       password: '',
       hostName: props.serverAddress,
       saveToken: props.persist,
-      groupOption: ''
+      groupOption: '',
+      testid: ''
     };
     this.handleLoginChange = this.handleLoginChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
@@ -35,6 +40,7 @@ export default class LoginView extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleAdminSetting = this.handleAdminSetting.bind(this);
     this.handleClick=this.handleClick.bind(this);
+    this.handleData=this.handleData.bind(this);
   }
 
   handleLoginChange(e) {
@@ -59,13 +65,19 @@ export default class LoginView extends React.Component {
     //this.props.handleShowInfoView();
   }
 
+  handleData=(data)=>{
+    console.log(data);
+    this.setState({
+      testid:data
+    });
+  }
 
   handleClick = async (e) => {
     try {
         e.preventDefault();
         const params = new URLSearchParams({
-            clientid: '1',
-            testid: '2'
+            clientid: 'demo1',
+            testid: this.state.testid
         });
         const url = `http://localhost:6060/api/getgroupinfo?${params}`;
         const response = await fetch(url);
@@ -74,18 +86,21 @@ export default class LoginView extends React.Component {
         const processdata = data.data.map((item) => ({
             groupid: item.Groupid,
             userid:item.Userid,
+            groupname:item.Groupname,
             username: item.Username
         }))
         this.setState({
-          groupOption:processdata[0].groupid,
-          login:'alice',
-          password:'alice123'
+          groupOption:processdata[0].groupname,
+          login:processdata[0].username,
+          password:processdata[0].username+'123'
         });
         // 处理响应数据
     } catch (error) {
         console.error('Error fetching options:', error);
     }
 };
+
+
 
 
   render() {
@@ -98,7 +113,7 @@ export default class LoginView extends React.Component {
       <form id="login-form" onSubmit={this.handleSubmit}>
 
         <div>
-          <TestDropdownList id="test-dplist" />       
+          <TestDropdownList id="test-dplist" onData={this.handleData} />       
         </div>
 
         <FormattedMessage id="group_prompt" defaultMessage="Group"

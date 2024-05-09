@@ -468,10 +468,6 @@
     "defaultMessage": "label_test_name",
     "description": "label_test_name"
   },
-  "label_test_time": {
-    "defaultMessage": "label_test_time",
-    "description": "label_test_time"
-  },
   "label_topic_name": {
     "defaultMessage": "Name",
     "description": "Label for editing topic name"
